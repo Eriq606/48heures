@@ -12,6 +12,12 @@ class ObjectifModel extends CI_Model {
         );
         $this->db->insert('profileobjectif', $toinsert);
     }
+    public function getDernierObjectif($idprofile){
+        $this->db->select("*");
+        $this->db->from("profileobjectif");
+        $this->db->where("idprofile", $idprofile);
+        
+    }
 }
 
 ?>

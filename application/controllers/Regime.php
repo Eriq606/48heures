@@ -20,7 +20,9 @@ class Regime extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('frontOffice/regime/selectionRegimes');
+		$user=$this->session->user;
+		$data['user']=$user;
+		$this->load->view('frontOffice/regime/selectionRegimes', $data);
 	}	
 
 }

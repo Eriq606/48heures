@@ -30,7 +30,7 @@ $this->load->view('templates/left');
             <div class="card">
                 <div class="card-body">
                 <h4 class="card-title">Je veux gagner</h4>
-                <form class="forms-sample" action="<?php echo site_url(""); ?>" method="post">
+                <form class="forms-sample" action="<?php echo site_url("objectif/modifierObjectif"); ?>" method="post">
                     <div class="form-group">
                     <input type="number" class="form-control" id="poidsGagne" name="poids" placeholder="poids en kg" step="0.1" required>
                     </div>
