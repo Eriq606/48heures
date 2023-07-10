@@ -15,6 +15,12 @@ class LoginAdmin extends CI_Controller {
 		$this->load->view('login/loginAdmin');
 	}	
 
+	public function acceuil()
+	{
+		// $this->load->view('frontOffice/accueil');
+		$this->load->view('backOffice/accueil');
+	}	
+
 	public function verifLogin() {
         $username = $this->input->post('nom');
         $password = $this->input->post('mdp');
@@ -24,7 +30,7 @@ class LoginAdmin extends CI_Controller {
         if (!empty($resultat)) {
 			if($resultat->is_admin == 1) {
 				$this->session->set_userdata("user", $resultat);
-				$this->load->view('backOffice/accueil');
+				redirect('loginAdmin/accueil');
 			}
 			$this->load->view('login/login');
         } else {
