@@ -55,7 +55,9 @@ CREATE TABLE plat (
     pu real,
     idobjectif INT,
     poids real,
-    foreign key (idobjectif) references objectif (idGenre)
+    idunite INT,
+    foreign key (idobjectif) references objectif (idGenre),
+    foreign key (idunite) references unite (idunite)
 );
 
 CREATE TABLE regimePlat(
