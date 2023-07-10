@@ -12,7 +12,7 @@ class Login extends CI_Controller {
 	public function login()
 	{
 		// $this->load->view('frontOffice/accueil');
-		$this->load->view('backOffice/accueil');
+		$this->load->view('frontOffice/accueil');
 	}	
 
 	public function verifLogin() {
@@ -22,12 +22,10 @@ class Login extends CI_Controller {
         $resultat = $this->LoginModel->verifylogin($username, $password);
         
         if (!empty($resultat)) {
-			if($resultat->is_admin == 1) {
-				$this->load->view('backOffice/accueil');
-			}
-			else {
+			if($resultat->is_admin == 0) {
 				$this->load->view('frontOffice/accueil');
 			}
+			$this->load->view('login/login');
         } else {
             // echo "Identifiants incorrects";
 			$this->load->view('login/login');
