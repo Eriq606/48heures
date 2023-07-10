@@ -15,7 +15,7 @@ class LoginAdmin extends CI_Controller {
 		$this->load->view('login/loginAdmin');
 	}	
 
-	public function acceuil()
+	public function accueil()
 	{
 		// $this->load->view('frontOffice/accueil');
 		$this->load->view('backOffice/accueil');
