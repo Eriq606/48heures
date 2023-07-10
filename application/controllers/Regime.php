@@ -41,7 +41,8 @@ class Regime extends CI_Controller {
 
 	public function create()
 	{
-		$this->load->view('backOffice/regime/createRegime');
+		$data['user']=$this->session->user;
+		$this->load->view('backOffice/regime/createRegime', $data);
 		
 	}	
 
