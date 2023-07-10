@@ -14,12 +14,12 @@ $this->load->view('templates/left');
                 <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4">
                     <ul>
                         <li>
-                            <span class="legend-dots" style="background:linear-gradient(to right, rgba(54, 215, 232, 1), rgba(177, 148, 250, 1))"></span><?php echo $genre->descriGenre; ?></li>
+                            <span class="legend-dots" style="background:linear-gradient(to right, rgba(54, 215, 232, 1), rgba(177, 148, 250, 1))"></span>Homme</li>
                         <li>
-                                <span class="legend-dots" style="background:linear-gradient(to right, rgba(6, 185, 157, 1), rgba(132, 217, 210, 1))"></span>Taille : <?php echo $profile->taille; ?> cm
+                                <span class="legend-dots" style="background:linear-gradient(to right, rgba(6, 185, 157, 1), rgba(132, 217, 210, 1))"></span>Taille : 182 cm
                             </li>
                             <li>
-                                <span class="legend-dots" style="background:linear-gradient(to right, rgba(255, 191, 150, 1), rgba(254, 112, 150, 1))"></span>Poids : <?php echo $profile->poids; ?> kg
+                                <span class="legend-dots" style="background:linear-gradient(to right, rgba(255, 191, 150, 1), rgba(254, 112, 150, 1))"></span>Poids : 62 kg
                             </li>
                         </ul>
                     </div>
@@ -30,12 +30,10 @@ $this->load->view('templates/left');
             <div class="card">
                 <div class="card-body">
                 <h4 class="card-title">Je veux perdre</h4>
-                <form class="forms-sample" action="<?php echo site_url(""); ?>" method="post">
+                <form class="forms-sample" method="post" action="<?php echo site_url('regime'); ?>">
                     <div class="form-group">
-                    <input type="number" class="form-control" id="poidsPerdu" name="poids" placeholder="poids en kg" step="0.1" required>
+                    <input type="number" class="form-control" id="poidsPerdu" name="poidsPerdu" placeholder="poids en kg" step="0.1" required>
                     </div>
-                    <input type="hidden" name="idobjectif" value="1">
-                    <input type="hidden" name="idprofile" value="<?php echo $profile->idprofile; ?>">
                     <button type="submit" class="btn btn-gradient-primary me-2">Confirmer</button>
                 </form>
                 </div>

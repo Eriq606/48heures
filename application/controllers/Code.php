@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Profile extends CI_Controller {
+class Code extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,10 +20,7 @@ class Profile extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('frontOffice/profile/profileUtilisateur');
+		$this->load->view('frontOffice/code/recharge');
 	}	
 	
-	public function objectif() {
-		$this->load->view('frontOffice/objectif/choixObjectifs');
-	}
 }

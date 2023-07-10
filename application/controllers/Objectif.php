@@ -24,31 +24,10 @@ class Objectif extends CI_Controller {
 	// }	
 	
 	public function augmenterPoids() {
-		$user=$this->session->user;
-		$data['user']=$user;
-		$profile=$this->ProfileModel->getProfileByUser($user->iduser);
-		$genre=$this->ProfileModel->getGenreById($profile->idGenre);
-		$data['profile']=$profile;
-		$data['genre']=$genre;
-		$this->load->view('frontOffice/objectif/augmenterPoids', $data);
+		$this->load->view('frontOffice/objectif/augmenterPoids');
 	}
 
     public function diminuerPoids() {
-		$user=$this->session->user;
-		$data['user']=$user;
-		$profile=$this->ProfileModel->getProfileByUser($user->iduser);
-		$genre=$this->ProfileModel->getGenreById($profile->idGenre);
-		$data['profile']=$profile;
-		$data['genre']=$genre;
-		$this->load->view('frontOffice/objectif/diminuerPoids', $data);
-	}
-	public function modifierObjectif(){
-		$idobjectif=$this->input->post("idobjectif");
-		$poids=$this->input->post("poids");
-		$idprofile=$this->input->post("idprofile");
-		$idprofileobjectif="null";
-		$date="(select current_date())";
-		$this->ObjectifModel->saveProfileObjectif($idprofileobjectif, $idprofile, $idobjectif, $poids, $date);
-		redirect("/");
+		$this->load->view('frontOffice/objectif/diminuerPoids');
 	}
 }
