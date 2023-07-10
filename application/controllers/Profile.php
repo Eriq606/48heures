@@ -20,7 +20,10 @@ class Profile extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('frontOffice/profile/profileUtilisateur');
+		$data['user']=$this->session->user;
+		$genre = $this->ProfileModel->getGenre();    
+		$data['genre'] = $genre;
+		$this->load->view('frontOffice/profile/profileUtilisateur', $data);
 	}	
 	public function toProfile(){
         $genre = $this->ProfileModel->getGenre();        
@@ -39,11 +42,13 @@ class Profile extends CI_Controller {
         $poids = $this->input->post('poids');
         
         $resultat = $this->ProfileModel->modifierProfile($iduser, $idgenre, $taille, $poids);
+		redirect('profile');
 
-		$this->load->view('frontOffice/accueil');
+		// $this->load->view('frontOffice/accueil');
     }
 	
 	public function objectif() {
-		$this->load->view('frontOffice/objectif/choixObjectifs');
+		$data['user']=$this->session->user;
+		$this->load->view('frontOffice/objectif/choixObjectifs', $data);
 	}
 }

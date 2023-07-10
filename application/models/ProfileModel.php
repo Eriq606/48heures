@@ -19,7 +19,7 @@ class ProfileModel extends CI_Model {
 
     public function getUser(){
         $this->db->select('*');
-        $this->db->from('user');
+        $this->db->from('utilisateur');
         
         $query = $this->db->get();
         $resultat = $query->result();
@@ -71,7 +71,24 @@ class ProfileModel extends CI_Model {
 
         $this->db->insert('profile', $data);        
     }
+    public function getProfileByUser($iduser){
+        $this->db->select("*");
+        $this->db->from("profile");
+        $this->db->where("iduser", $iduser);
 
+        $query=$this->db->get();
+        $resultat=$query->result();
+        return $resultat[0];
+    }
+    public function getGenreById($idgenre){
+        $this->db->select("*");
+        $this->db->from("genre");
+        $this->db->where("idGenre", $idgenre);
+
+        $query=$this->db->get();
+        $resultat=$query->result();
+        return $resultat[0];
+    }
 }
 
 ?>

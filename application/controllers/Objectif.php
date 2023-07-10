@@ -24,10 +24,22 @@ class Objectif extends CI_Controller {
 	// }	
 	
 	public function augmenterPoids() {
-		$this->load->view('frontOffice/objectif/augmenterPoids');
+		$user=$this->session->user;
+		$data['user']=$user;
+		$profile=$this->ProfileModel->getProfileByUser($user->iduser);
+		$genre=$this->ProfileModel->getGenreById($profile->idGenre);
+		$data['profile']=$profile;
+		$data['genre']=$genre;
+		$this->load->view('frontOffice/objectif/augmenterPoids', $data);
 	}
 
     public function diminuerPoids() {
-		$this->load->view('frontOffice/objectif/diminuerPoids');
+		$user=$this->session->user;
+		$data['user']=$user;
+		$profile=$this->ProfileModel->getProfileByUser($user->iduser);
+		$genre=$this->ProfileModel->getGenreById($profile->idGenre);
+		$data['profile']=$profile;
+		$data['genre']=$genre;
+		$this->load->view('frontOffice/objectif/diminuerPoids', $data);
 	}
 }
