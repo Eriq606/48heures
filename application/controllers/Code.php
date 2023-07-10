@@ -20,7 +20,9 @@ class Code extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('frontOffice/code/recharge');
+		$user=$this->session->user;
+		$data['user']=$user;
+		$this->load->view('frontOffice/code/recharge', $data);
 	}	
 	
 }
