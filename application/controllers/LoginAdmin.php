@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class LoginAdmin extends CI_Controller {
 
 	public function index()
 	{
@@ -12,7 +12,7 @@ class Login extends CI_Controller {
 	public function login()
 	{
 		// $this->load->view('frontOffice/accueil');
-		$this->load->view('frontOffice/accueil');
+		$this->load->view('login/loginAdmin');
 	}	
 
 	public function verifLogin() {
@@ -20,15 +20,12 @@ class Login extends CI_Controller {
         $password = $this->input->post('mdp');
         
         $resultat = $this->LoginModel->verifylogin($username, $password);
+        
         if (!empty($resultat)) {
-			if($resultat->is_admin == 0) {
-				$this->session->set_userdata('user', $resultat);
-				// $data['user']=$this->session->user;
-				// $this->load->view('frontOffice/accueil', $data);
-				redirect('profile');
-			}else{
-				$this->load->view('login/login');
+			if($resultat->is_admin == 1) {
+				$this->load->view('backOffice/accueil');
 			}
+			$this->load->view('login/login');
         } else {
             // echo "Identifiants incorrects";
 			$this->load->view('login/login');
