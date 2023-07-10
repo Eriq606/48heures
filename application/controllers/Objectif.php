@@ -42,4 +42,13 @@ class Objectif extends CI_Controller {
 		$data['genre']=$genre;
 		$this->load->view('frontOffice/objectif/diminuerPoids', $data);
 	}
+	public function modifierObjectif(){
+		$idobjectif=$this->input->post("idobjectif");
+		$poids=$this->input->post("poids");
+		$idprofile=$this->input->post("idprofile");
+		$idprofileobjectif="null";
+		$date="(select current_date())";
+		$this->ObjectifModel->saveProfileObjectif($idprofileobjectif, $idprofile, $idobjectif, $poids, $date);
+		redirect("/");
+	}
 }

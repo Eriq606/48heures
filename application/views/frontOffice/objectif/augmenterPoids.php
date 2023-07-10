@@ -32,8 +32,10 @@ $this->load->view('templates/left');
                 <h4 class="card-title">Je veux gagner</h4>
                 <form class="forms-sample" action="<?php echo site_url(""); ?>" method="post">
                     <div class="form-group">
-                    <input type="number" class="form-control" id="poidsGagne" name="poidsGagne" placeholder="poids en kg" step="0.1" required>
+                    <input type="number" class="form-control" id="poidsGagne" name="poids" placeholder="poids en kg" step="0.1" required>
                     </div>
+                    <input type="hidden" name="idobjectif" value="2">
+                    <input type="hidden" name="idprofile" value="<?php echo $profile->idprofile; ?>">
                     <button type="submit" class="btn btn-gradient-primary me-2">Confirmer</button>
                 </form>
                 </div>
