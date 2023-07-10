@@ -7,6 +7,10 @@ class RegimeModel extends CI_Model {
         $query=sprintf($query, $objectif->poids-$marge, $objectif->poids+$marge, $objectif->idobjectif);
         $resultset=$this->db->query($query);
         $result=$resultset->result();
+        foreach($result as $rs){
+            $rs->regimeplats=getRegimePlatByRegime($rs->idregime);
+            $rs->regimeActivite=getRegimeActiviteByRegime($rs->idregime);
+        }
         return $result;
     }
     public function getRegimePlatByRegime($idregime){
@@ -14,6 +18,9 @@ class RegimeModel extends CI_Model {
         $this->db->from("regimeplat");
         $this->db->where("idregime", $idregime);
         $result=$this->db->get();
+        foreach($result as $rs){
+            $rs->plat=$this->PlatModel->getPlatById($rs->idplat);
+        }
         return $result;
     }
     public function getRegimeActiviteByRegime($idregime){
@@ -21,6 +28,9 @@ class RegimeModel extends CI_Model {
         $this->db->from("regimeactivite");
         $this->db->where("idregime", $idregime);
         $result=$this->db->get();
+        foreach($result as $rs){
+            $rs->activite=$this->ActiviteModel->getActiviteById($rs->idactivite);
+        }
         return $result;
     }
 }

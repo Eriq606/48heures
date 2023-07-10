@@ -26,7 +26,7 @@ $this->load->view('templates/left');
                     <form class="forms-sample">
                     <div class="form-group">
                     <label for="marge">Marge en % du poids objectif</label>
-                    <input type="number" class="form-control" id="marge" name="marge" placeholder="marge" step="0.1" required>
+                    <input type="number" class="form-control" id="marge" name="marge" placeholder="marge" step="0.1" required value="<?php echo $marge; ?>">
                     </div>
                     <button type="submit" class="btn btn-gradient-primary me-2">modifier marge</button>
                 </form>

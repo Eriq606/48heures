@@ -24,7 +24,10 @@ class Regime extends CI_Controller {
 		$data['user']=$user;
 		$profile=$this->ProfileModel->getProfileByUser($user->iduser);
 		$dernierObjectif=$this->ObjectifModel->getDernierObjectif($profile->idprofile);
-		$regimes=$this->RegimeModel->getRegimeCorrespondant($dernierObjectif);
+		$marge=5;
+		$regimes=$this->RegimeModel->getRegimeCorrespondant($marge, $dernierObjectif);
+		$data['regimes']=$regimes;
+		$data['marge']=$marge;
 		$this->load->view('frontOffice/regime/selectionRegimes', $data);
 	}	
 

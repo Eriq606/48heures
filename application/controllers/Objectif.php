@@ -28,6 +28,7 @@ class Objectif extends CI_Controller {
 		$data['user']=$user;
 		$profile=$this->ProfileModel->getProfileByUser($user->iduser);
 		$genre=$this->ProfileModel->getGenreById($profile->idGenre);
+		// $this->ObjectifModel->getDernierObjectif($profile->idprofile);	
 		$data['profile']=$profile;
 		$data['genre']=$genre;
 		$this->load->view('frontOffice/objectif/augmenterPoids', $data);
@@ -48,10 +49,10 @@ class Objectif extends CI_Controller {
 		$idprofile=$this->input->post("idprofile");
 		$idprofileobjectif="null";
 		$date=date('Y-m-d');
-		$this->ObjectifModel->saveProfileObjectif($idprofileobjectif, $idprofile, $idobjectif, $poids, $date);
+		// $this->ObjectifModel->saveProfileObjectif($idprofileobjectif, $idprofile, $idobjectif, $poids, $date);
 		switch($idobjectif){
 			case "1":
-				redirect("objectif/diminuerPoids");
+				redirect("regime");
 				break;
 			case "2":
 				redirect("objectif/augmenterPoids");
