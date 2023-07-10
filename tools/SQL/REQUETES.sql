@@ -41,22 +41,22 @@ CREATE TABLE profileObjectif(
 CREATE TABLE regime(
     idregime INT AUTO_INCREMENT PRIMARY KEY,
     descriRegime varchar(30),
-    duree real
+    duree real,
+    idobjectif INT,
+    poids real,
+    foreign key (idobjectif) references objectif (idobjectif)
 );
 
 CREATE TABLE unite(
     idunite  INT AUTO_INCREMENT PRIMARY KEY,
     descriUnite varchar(30)
-)
+);
 
 CREATE TABLE plat (
     idplat  INT AUTO_INCREMENT PRIMARY KEY,
     descriPlat varchar(30),
     pu real,
-    idobjectif INT,
-    poids real,
     idunite INT,
-    foreign key (idobjectif) references objectif (idGenre),
     foreign key (idunite) references unite (idunite)
 );
 
@@ -71,16 +71,14 @@ CREATE TABLE regimePlat(
 
 CREATE TABLE activite(
     idactivite  INT AUTO_INCREMENT PRIMARY KEY,
-    descriActivite varchar(30),
-    idobjectif  INT,
-    poids real,
-    foreign key (idobjectif) references objectif (idGenre)
+    descriActivite varchar(30)
 );
 
 CREATE TABLE regimeActivite(
     idregimeActivite INT AUTO_INCREMENT PRIMARY KEY,
     idregime INT,
     idactivite INT,
+    quantite real,
     foreign key (idregime) references regime (idregime),
     foreign key (idactivite) references activite (idactivite)
 );
