@@ -33,4 +33,10 @@ class Regime extends CI_Controller {
 		$this->load->view('frontOffice/regime/selectionRegimes', $data);
 	}	
 
+	public function create()
+	{
+		$this->load->view('backOffice/regime/createRegime');
+		
+	}	
+
 }
