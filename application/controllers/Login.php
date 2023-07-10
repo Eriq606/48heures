@@ -20,12 +20,14 @@ class Login extends CI_Controller {
         $password = $this->input->post('mdp');
         
         $resultat = $this->LoginModel->verifylogin($username, $password);
-        
         if (!empty($resultat)) {
 			if($resultat->is_admin == 0) {
-				$this->load->view('frontOffice/accueil');
+				$this->session->set_userdata('user', $resultat);
+				$data['user']=$this->session->user;
+				$this->load->view('frontOffice/accueil', $data);
+			}else{
+				$this->load->view('login/login');
 			}
-			$this->load->view('login/login');
         } else {
             // echo "Identifiants incorrects";
 			$this->load->view('login/login');

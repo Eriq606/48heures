@@ -20,10 +20,35 @@ class Profile extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('frontOffice/profile/profileUtilisateur');
+		$data['user']=$this->session->user;
+		$genre = $this->ProfileModel->getGenre();    
+		$data['genre'] = $genre;
+		$this->load->view('frontOffice/profile/profileUtilisateur', $data);
 	}	
+	public function toProfile(){
+        $genre = $this->ProfileModel->getGenre();        
+        $user = $this->ProfileModel->getUser(); // test fa tsy ilaina
+
+        $data['genre'] = $genre;
+        $data['user'] = $user;
+
+		$this->load->view('test/testProfile', $data);
+    }
+
+	public function modifierProfile() {
+        $iduser = $this->input->post('iduser');
+        $idgenre = $this->input->post('idgenre');
+        $taille = $this->input->post('taille');
+        $poids = $this->input->post('poids');
+        
+        $resultat = $this->ProfileModel->modifierProfile($iduser, $idgenre, $taille, $poids);
+		redirect('profile');
+
+		// $this->load->view('frontOffice/accueil');
+    }
 	
 	public function objectif() {
-		$this->load->view('frontOffice/objectif/choixObjectifs');
+		$data['user']=$this->session->user;
+		$this->load->view('frontOffice/objectif/choixObjectifs', $data);
 	}
 }
