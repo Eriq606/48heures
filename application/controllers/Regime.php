@@ -24,7 +24,10 @@ class Regime extends CI_Controller {
 		$data['user']=$user;
 		$profile=$this->ProfileModel->getProfileByUser($user->iduser);
 		$dernierObjectif=$this->ObjectifModel->getDernierObjectif($profile->idprofile);
-		$marge=5;
+		$marge=$this->input->post("marge");
+		if(!isset($marge)){
+			$marge=5;
+		}
 		$regimes=$this->RegimeModel->getRegimeCorrespondant($marge, $dernierObjectif);
 		$data['profile']=$profile;
 		$data['objectif']=$dernierObjectif;
@@ -32,6 +35,9 @@ class Regime extends CI_Controller {
 		$data['marge']=$marge;
 		$this->load->view('frontOffice/regime/selectionRegimes', $data);
 	}	
+	public function modifierMarge(){
+
+	}
 
 	public function create()
 	{

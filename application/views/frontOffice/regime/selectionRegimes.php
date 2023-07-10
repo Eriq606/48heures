@@ -28,7 +28,7 @@ $this->load->view('templates/left');
                 </li>
               </ul>
             </div>
-            <form class="forms-sample">
+            <form class="forms-sample" action="<?php echo site_url("regime"); ?>" method="post">
               <div class="form-group">
                 <label for="marge">Marge en % du poids objectif</label>
                 <input type="number" class="form-control" id="marge" name="marge" placeholder="marge" step="0.1"
