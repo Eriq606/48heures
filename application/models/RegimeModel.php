@@ -15,7 +15,7 @@ class RegimeModel extends CI_Model {
     }
     public function getRegimePlatByRegime($idregime){
         $this->db->select("*");
-        $this->db->from("regimeplat");
+        $this->db->from("regimePlat");
         $this->db->where("idregime", $idregime);
         $result=$this->db->get();
         $result=$result->result();
@@ -26,7 +26,7 @@ class RegimeModel extends CI_Model {
     }
     public function getRegimeActiviteByRegime($idregime){
         $this->db->select("*");
-        $this->db->from("regimeactivite");
+        $this->db->from("regimeActivite");
         $this->db->where("idregime", $idregime);
         $result=$this->db->get();
         $result=$result->result();

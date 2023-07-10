@@ -18,7 +18,8 @@ class LoginAdmin extends CI_Controller {
 	public function accueil()
 	{
 		// $this->load->view('frontOffice/accueil');
-		$this->load->view('backOffice/accueil');
+		$data['user']=$this->session->user;
+		$this->load->view('backOffice/accueil', $data);
 	}	
 
 	public function verifLogin() {
