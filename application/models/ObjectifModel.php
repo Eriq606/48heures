@@ -13,10 +13,10 @@ class ObjectifModel extends CI_Model {
         $this->db->insert('profileobjectif', $toinsert);
     }
     public function getDernierObjectif($idprofile){
-        $this->db->select("*");
-        $this->db->from("profileobjectif");
-        $this->db->where("idprofile", $idprofile);
-        
+        $query="select * from profileobjectif where idprofile=%s order by date desc limit 1";
+        $query=sprintf($query, $idprofile);
+        $resultset=$this->db->query($query);
+        $
     }
 }
 
