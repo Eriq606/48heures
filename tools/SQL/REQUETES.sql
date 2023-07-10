@@ -44,6 +44,11 @@ CREATE TABLE regime(
     duree real
 );
 
+CREATE TABLE unite(
+    idunite  INT AUTO_INCREMENT PRIMARY KEY,
+    descriUnite varchar(30)
+)
+
 CREATE TABLE plat (
     idplat  INT AUTO_INCREMENT PRIMARY KEY,
     descriPlat varchar(30),

@@ -71,6 +71,7 @@ class ProfileModel extends CI_Model {
 
         $this->db->insert('profile', $data);        
     }
+    
     public function getProfileByUser($iduser){
         $this->db->select("*");
         $this->db->from("profile");
