@@ -16,7 +16,11 @@ class ObjectifModel extends CI_Model {
         $query="select * from profileobjectif where idprofile=%s order by date desc limit 1";
         $query=sprintf($query, $idprofile);
         $resultset=$this->db->query($query);
-        $
+        $result=$resultset->result();
+        if(count($result)>0){
+            return $result[0];
+        }
+        return null;
     }
 }
 
