@@ -47,8 +47,15 @@ class Objectif extends CI_Controller {
 		$poids=$this->input->post("poids");
 		$idprofile=$this->input->post("idprofile");
 		$idprofileobjectif="null";
-		$date="(select current_date())";
+		$date=date('Y-m-d');
 		$this->ObjectifModel->saveProfileObjectif($idprofileobjectif, $idprofile, $idobjectif, $poids, $date);
-		redirect("/");
+		switch($idobjectif){
+			case "1":
+				redirect("objectif/diminuerPoids");
+				break;
+			case "2":
+				redirect("objectif/augmenterPoids");
+				break;
+		}
 	}
 }
