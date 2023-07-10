@@ -23,6 +23,7 @@ class Login extends CI_Controller {
         
         if (!empty($resultat)) {
 			if($resultat->is_admin == 0) {
+				$this->session->set_userdata("user", $resultat);
 				// $this->load->view('frontOffice/accueil');
 				redirect('profile');
 			}

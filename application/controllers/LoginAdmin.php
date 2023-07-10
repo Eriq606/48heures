@@ -23,6 +23,7 @@ class LoginAdmin extends CI_Controller {
         
         if (!empty($resultat)) {
 			if($resultat->is_admin == 1) {
+				$this->session->set_userdata("user", $resultat);
 				$this->load->view('backOffice/accueil');
 			}
 			$this->load->view('login/login');
