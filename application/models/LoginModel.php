@@ -5,7 +5,7 @@ class LoginModel extends CI_Model {
     
     public function verifylogin($username, $password) {
         $this->db->select('*');
-        $this->db->from('user');
+        $this->db->from('utilisateur');
         $this->db->where('nom', $username);
         $this->db->where('mdp', $password);
 
@@ -25,7 +25,7 @@ class LoginModel extends CI_Model {
             'is_admin' => 0
         );
     
-        $this->db->insert('user', $data);
+        $this->db->insert('utilisateur', $data);
     }
 
 }

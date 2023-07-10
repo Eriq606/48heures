@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login</title>
+    <title>Authentification</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="<?php echo site_url('assets/vendors/mdi/css/materialdesignicons.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo site_url('assets/vendors/css/vendor.bundle.base.css'); ?>">
@@ -28,23 +28,17 @@
                 <div class="brand-logo">
                   <img src="<?php echo site_url('assets/images/logo.svg'); ?>">
                 </div>
-                <h4>Hello!</h4>
+                <h4>Hello admin !</h4>
                 <h6 class="font-weight-light">Connectez-vous pour continuer.</h6>
-                <form class="pt-3" method="post" action="<?php echo site_url('login/verifLogin'); ?>">
+                <form class="pt-3" method="post" action="<?php echo site_url('loginAdmin/verifLogin'); ?>">
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" name="nom" placeholder="Nom" value="Alice" required>
+                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" name="nom" placeholder="Nom" value="John" required>
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="mdp" placeholder="Mot de passe" value="1234" required>
                   </div>
-                  
                   <div class="mt-3">
-                    <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit">SE CONNECTER</button>
-                  </div>
-                  <div class="text-center mt-4 font-weight-light"> Pas encore inscrit? <a href="<?php echo site_url('login/toInscription'); ?>" class="text-primary">Je m'inscris</a>
-                  </div>
-                  <div class="mt-3" style="width:100%; display:flex; justify-content:center;">
-                  <button type="button" class="btn btn-block btn-gradient-success btn-lg font-weight-medium auth-form-btn" style="margin:0 auto;"><a href="<?php echo site_url('loginAdmin/login'); ?>" class="text-primary" style="text-decoration:none; color:white !important;">authentification admin</a></button>
+                    <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit">S'AUTHENTIFIER</button>
                   </div>
                 </form>
               </div>

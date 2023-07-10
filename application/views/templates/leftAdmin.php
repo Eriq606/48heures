@@ -15,21 +15,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url('profile'); ?>">
-                <span class="menu-title">Votre profile</span>
+              <a class="nav-link" href="<?php echo site_url('regime/create'); ?>">
+                <span class="menu-title">Creer regime</span>
                 <i class="mdi mdi-account menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url('profile/objectif'); ?>">
-                <span class="menu-title">Objectif</span>
-                <i class="mdi mdi-chart-areaspline menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url('code'); ?>">
-                <span class="menu-title">code recharge</span>
-                <i class="mdi mdi-wallet menu-icon"></i>
               </a>
             </li>
           </ul>
