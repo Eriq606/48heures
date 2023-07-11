@@ -39,7 +39,6 @@ class Regime extends CI_Controller {
 		$this->load->view('frontOffice/regime/selectionRegimes', $data);
 	}
 	public function commander($idregime){
-		require_once(APPPATH . 'libraries/fpdf/fpdf.php');
 		$user=$this->session->user;
 		$regime=$this->RegimeModel->getRegimeById($idregime);
 		$commande=$this->PortefeuilleModel->commanderRegime($user, $regime);
@@ -52,10 +51,15 @@ class Regime extends CI_Controller {
 	}
 
 	public function toPdf($idregime){
-		$this->load->view('backOffice/regime/listeRegimes', $data);
+		$user=$this->session->user;		
+		$data['user']=$user;
+		$data['idregime'] = $idregime;
+		$this->load->view('frontOffice/regime/pdf', $data);
 	}
 
 	public function voirPdf($idregime){
+		$user=$this->session->user;
+		require_once(APPPATH . 'libraries/fpdf/fpdf.php');
 		$montant = 0;
 		$data = array();
 		$plats = $this->PDFModel->getRegimePlat($idregime);
@@ -106,6 +110,8 @@ class Regime extends CI_Controller {
 	}
 
 	public function telechargerPdf($idregime){
+		$user=$this->session->user;
+		require_once(APPPATH . 'libraries/fpdf/fpdf.php');
 		$montant = 0;
 		$data = array();
 		$plats = $this->PDFModel->getRegimePlat($idregime);
