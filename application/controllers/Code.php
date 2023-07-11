@@ -18,11 +18,45 @@ class Code extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index($erreur="")
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
+		$codes=$this->CodeModel->getAllCode();
+		$data['codes']=$codes;
+		$caisse=$this->PortefeuilleModel->getCaisseForProfile($user->iduser);
+		$data['caisse']=$caisse;
+		$data['erreur']=str_replace(array("_"), " ", $erreur);
 		$this->load->view('frontOffice/code/recharge', $data);
 	}	
-	
+
+	public function toValidate() {
+		$user=$this->session->user;
+		$data['user']=$user;
+		$entreecode=$this->CodeModel->getAllEntreeCode();
+		$data['entrees']=$entreecode;
+		$this->load->view('backOffice/code/validation', $data);
+	}
+
+	public function validate($idCode) {
+		$user=$this->session->user;
+		$data['user']=$user;
+		$etat=11;
+		$this->CodeModel->updateEntreeCode($idCode, $etat);
+		redirect('code/toValidate');
+	}
+	public function entreeCode(){
+		$codestr=$this->input->post('codestr');
+		$code=$this->CodeModel->getCodeByStr($codestr);
+		if($code===false){
+			redirect('code');
+		}
+		$user=$this->session->user;
+		$date=date('Y-m-d');
+		$enregistre=$this->CodeModel->enregistrerCodeUser($user->iduser, $code, $date);
+		if(!$enregistre){
+			redirect('code/index/Le_code_a_deja_ete_utilise');
+		}
+		redirect('code');
+	}
 }

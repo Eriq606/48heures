@@ -15,9 +15,33 @@
               </a>
             </li>
             <li class="nav-item">
+             <a class="nav-link" href="<?php echo site_url('loginAdmin/accueil'); ?>">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-view-dashboard menu-icon"></i>
+              </a>
+              <a class="nav-link" href="<?php echo site_url('code/toValidate'); ?>">
+                <span class="menu-title">Validation code</span>
+                <i class="mdi mdi-check-circle menu-icon"></i>
+              </a>
               <a class="nav-link" href="<?php echo site_url('regime/create'); ?>">
                 <span class="menu-title">Creer regime</span>
-                <i class="mdi mdi-account menu-icon"></i>
+                <i class="mdi mdi-library-plus menu-icon"></i>
+              </a>
+              <a class="nav-link" href="<?php echo site_url('regime/liste'); ?>">
+                <span class="menu-title">liste des regimes</span>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              </a>
+              <a class="nav-link" href="<?php echo site_url('plat/toCreate'); ?>">
+                <span class="menu-title">Creer un plat</span>
+                <i class="mdi mdi-library-plus menu-icon"></i>
+              </a>
+              <a class="nav-link" href="<?php echo site_url('plat/liste'); ?>">
+                <span class="menu-title">liste des plats</span>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              </a>
+              <a class="nav-link" href="<?php echo site_url('activite'); ?>">
+                <span class="menu-title">Activites sportives</span>
+                <i class="mdi mdi-vector-triangle menu-icon"></i>
               </a>
             </li>
           </ul>

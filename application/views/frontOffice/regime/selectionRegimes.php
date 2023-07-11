@@ -7,7 +7,7 @@ $this->load->view('templates/left');
 <div class="main-panel">
   <div class="content-wrapper">
     <div class="page-header">
-      <h3 class="page-title"> Regimes suggerés </h3>
+      <h3 class="page-title"> Regimes suggerés selon le dernier objectif </h3>
     </div>
     <div class="row">
       <div class="col-md-6 grid-margin stretch-card">
@@ -46,13 +46,14 @@ $this->load->view('templates/left');
               alt="circle-image">
             <h4 class="font-weight-normal mb-3">Solde actuel <i class="mdi mdi-shopping mdi-24px float-right"></i>
             </h4>
-            <h2 class="mb-5">955 741 Ar</h2>
+            <h2 class="mb-5"><?php echo $caisse; ?> Ar</h2>
           </div>
         </div>
       </div>
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
+          <p style="color:red"><?php echo $erreur; ?></p>
             <h4 class="card-title">Liste des regimes</h4>
             </p>
             <table class="table table-bordered">
@@ -113,8 +114,10 @@ $this->load->view('templates/left');
                       <?php echo number_format($this->RegimeModel->getMontantTotal($r), 2, ",", " "); ?> Ar
                     </div>
                     <div>
+                    <a href="regime/commander/<?php echo $r->idregime; ?>">
                       <button type="button" class="btn btn-outline-success btn-icon-text">
-                        <i class="mdi mdi-shopping  btn-icon-prepend"></i> Commander </button>
+                       <i class="mdi mdi-shopping  btn-icon-prepend"></i> Commander</button>
+                       </a>
                   </td>
           </div>
 

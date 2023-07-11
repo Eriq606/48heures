@@ -32,5 +32,11 @@
                 <i class="mdi mdi-wallet menu-icon"></i>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url('regime'); ?>">
+                <span class="menu-title">Régimes suggerés </span>
+                <i class="mdi mdi-food-apple menu-icon"></i>
+              </a>
+            </li>
           </ul>
         </nav>

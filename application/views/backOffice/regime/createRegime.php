@@ -92,6 +92,63 @@ $this->load->view('templates/leftAdmin');
                                         </div>
                                     </div>
                                 </div>
+                                <p>Liste des activites sportives</p>
+                                <div class="row" style="height: 200px;overflow-y: scroll;">
+                                    <div class="row" style="display: flex; justify-content: space-around;">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <div class="form-check ">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="form-check-input"> sport 1 <i
+                                                            class="input-helper"></i>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" id="frequence sport 1"
+                                                    placeholder="frequence sport 1" step="0.1" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="display: flex; justify-content: space-around; ">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <div class="form-check ">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="form-check-input"> sport 1 <i
+                                                            class="input-helper"></i>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" id="frequence sport 1"
+                                                    placeholder="frequence sport 1" step="0.1" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="display: flex; justify-content: space-around; ">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <div class="form-check ">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="form-check-input"> sport 1 <i
+                                                            class="input-helper"></i>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" id="frequence sport 1"
+                                                    placeholder="frequence sport 1" step="0.1" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-gradient-primary me-2">Creer</button>
                         </form>
                     </div>

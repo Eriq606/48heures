@@ -18,7 +18,7 @@ class Regime extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index($erreur="")
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
@@ -29,12 +29,67 @@ class Regime extends CI_Controller {
 			$marge=5;
 		}
 		$regimes=$this->RegimeModel->getRegimeCorrespondant($marge, $dernierObjectif);
+		$caisse=$this->PortefeuilleModel->getCaisseForProfile($user->iduser);
+		$data['caisse']=number_format($caisse, 2, ",", " ");
 		$data['profile']=$profile;
 		$data['objectif']=$dernierObjectif;
 		$data['regimes']=$regimes;
 		$data['marge']=$marge;
+		$data['erreur']=str_replace(['_']," ",$erreur);
 		$this->load->view('frontOffice/regime/selectionRegimes', $data);
-	}	
+	}
+	public function commander($idregime){
+		$user=$this->session->user;
+		$regime=$this->RegimeModel->getRegimeById($idregime);
+		$commande=$this->PortefeuilleModel->commanderRegime($user, $regime);
+		if($commande===false){
+			redirect('regime/index/Le_regime_est_trop_cher');
+		}else{
+			redirect('regime');
+		}
+	}
+
+	public function delete($idRegime)
+	{
+		$user=$this->session->user;
+		$data['user']=$user;
+		
+		$this->RegimeModel->deleteRegime($idRegime);
+		redirect('regime/liste');
+	}
+	
+	public function toUpdate($idRegime)
+	{
+		$user=$this->session->user;
+		$data['user']=$user;
+
+		$data['regime'] = $this->RegimeModel->getRegimeById($idRegime);
+		$data['objectifs'] = $this->RegimeModel->getObjectif();
+		$this->load->view('backOffice/regime/updateRegime', $data);
+	}
+
+	public function update()
+	{
+		$idregime=$this->input->post("idregime");
+		$descriRegime=$this->input->post("descriRegime");
+		$duree=$this->input->post("duree");
+		$poids=$this->input->post("poids");
+		$idobjectif=$this->input->post("idobjectif");
+
+		$this->RegimeModel->updateRegime($idregime, $descriRegime, $duree, $idobjectif, $poids);
+		redirect('regime/liste');
+	}
+
+	public function liste()
+	{
+		$user=$this->session->user;
+		$data['user']=$user;
+
+		$data['regimes'] = $this->RegimeModel->getRegime();
+
+		$this->load->view('backOffice/regime/listeRegimes', $data);
+	}
+	
 	public function modifierMarge(){
 
 	}
@@ -42,8 +97,9 @@ class Regime extends CI_Controller {
 	public function create()
 	{
 		$data['user']=$this->session->user;
-		$this->load->view('backOffice/regime/createRegime', $data);
-		
+		$data['plats'] = $this->PlatModel->getPlat();
+		$data['activites'] = $this->ActiviteModel->getActivite();
+		$this->load->view('backOffice/regime/createRegime', $data);		
 	}	
 
 }
