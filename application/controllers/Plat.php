@@ -24,7 +24,7 @@ class Plat extends CI_Controller {
 		
 	}	
 
-    public function delete($idPlat)
+    public function delete($idplat)
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
@@ -40,16 +40,14 @@ class Plat extends CI_Controller {
 		$data['user']=$user;
 
 		$data['plat'] = $this->PlatModel->getPlatById($idPlat);
+		$data['unites'] = $this->PlatModel->getUnite();
 
 		$this->load->view('backOffice/plat/updatePlat', $data);
 	}
 	
-	public function update($idPlat)
+	public function update()
 	{
-		$user=$this->session->user;
-		$data['user']=$user;
-
-		$idplat = $this->input->post('idpl$idplat');
+		$idplat = $this->input->post('idplat');
 		$descriPLat = $this->input->post('descriPLat');
 		$pu = $this->input->post('pu');
 		$idunite = $this->input->post('idunite');
@@ -58,14 +56,23 @@ class Plat extends CI_Controller {
 
 		redirect('plat/liste');
 	}
+
+	public function toCreate()
+	{
+		$user=$this->session->user;
+		$data['user']=$user;
+		$data['unites'] = $this->PlatModel->getUnite();
+		$this->load->view('backOffice/plat/createPlat', $data);
+	}
     
     public function create()
 	{
 		$data['user']=$this->session->user;
-		$descriPLat = $this->input->post('descriPLat');
+
+		$descriPlat = $this->input->post('descriPlat');
 		$pu = $this->input->post('pu');
 		$idunite = $this->input->post('idunite');
-		$this->PlatModel->savePlat($descriPLat, $pu, $idunite);
+		$this->PlatModel->savePlat($descriPlat, $pu, $idunite);
 		
 		redirect('plat/liste');
 	}
