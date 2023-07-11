@@ -40,6 +40,7 @@ class Code extends CI_Controller {
 	public function validate($idCode) {
 		$user=$this->session->user;
 		$data['user']=$user;
+		
 		$this->load->view('backOffice/code/validation', $data);
 	}
 	public function entreeCode(){

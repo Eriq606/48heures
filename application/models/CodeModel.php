@@ -34,7 +34,19 @@ class CodeModel extends CI_Model {
         $this->db->from("v_code");
         $result=$this->db->get();
         $result=$result->result();
+        foreach($result as $rs){
+            switch($rs->idetat){
+                case 1:
+                    $rs->html="";
+                    break;
+                default:
+                    $rs->html="style='display:none'";
+            }
+        }
         return $result;
+    }
+    public function updateEntreeCode($identreecode, $idetat){
+        $array=
     }
 }
 
