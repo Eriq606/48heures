@@ -18,7 +18,7 @@
             $data['plat'] = $this->PDFModel->getRegimePlat($idregime);
             $data['activite'] = $this->PDFModel->getRegimeActivite($idregime);
 
-            $_SESSION['data'] = $data;
+            $_SESSION['data'] = $data; 
             $this->load->view('test/pdf');
         }
 
