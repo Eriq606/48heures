@@ -138,5 +138,6 @@ $autoload['model'] = array(
     'ProfileModel' => 'ProfileModel',
     'RegimeModel' => 'RegimeModel',
     'PlatModel' => 'PlatModel',
-    'ActiviteModel' => 'ActiviteModel'
+    'ActiviteModel' => 'ActiviteModel',
+    'PDFModel' => 'PDFModel'
 );
