@@ -10,6 +10,10 @@ class CodeModel extends CI_Model {
         return $result;
     }
     public function enregistrerCodeUser($iduser, $code, $date){
+        $dejaPris=$this->verifyCodeDejaPris($code);
+        if($dejaPris){
+            return false;
+        }
         $array=array(
             'identreecode' => 'null',
             'iduser' => $iduser,
@@ -18,6 +22,7 @@ class CodeModel extends CI_Model {
             'idetat' => 1
         );
         $this->db->insert("entreecode", $array);
+        return true;
     }
     public function getCodeByStr($codestr){
         $query="select * from code where descriCode='%s'";
@@ -51,6 +56,19 @@ class CodeModel extends CI_Model {
         );
         $this->db->where("identreecode", $identreecode);
         $this->db->update("entreecode", $array);
+    }
+    public function verifyCodeDejaPris($code){
+        $this->db->select("*");
+        $this->db->from("entreecode");
+        $this->db->where("idcode", $code->idcode);
+        $result=$this->db->get();
+        $result=$result->result();
+        foreach($result as $rs){
+            if($rs->idetat>=11){
+                return true;
+            }
+        }
+        return false;
     }
 }
 

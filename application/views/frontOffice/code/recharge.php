@@ -14,6 +14,7 @@ $this->load->view('templates/left');
                 <form class="forms-sample" method="post" action="<?php echo site_url('code/entreeCode'); ?>">
                     <div class="form-group">
                     <input type="text" class="form-control" id="code" name="codestr" placeholder="votre code de recharge"  required>
+                    <p style="color:red"><?php echo $erreur; ?></p>
                     </div>
                     <button type="submit" class="btn btn-gradient-primary me-2">Recharger mon compte</button>
                 </form>
