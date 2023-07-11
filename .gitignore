@@ -1,12 +1,6 @@
 .DS_Store
 
 system
-composer.json
-contributing.md
-index.php
-license.txt
-readme.rst
-.htaccess
 ITU-S4-PROJET-48h-20230710-partie1.pdf
 
 application/cache/*
