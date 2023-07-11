@@ -26,10 +26,10 @@ $this->load->view('templates/leftAdmin');
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php for($i = 0; $i < 3; $i++) { ?>
+                                <?php foreach($regimes as $regime) { ?>
                                 <tr>
                                     <td>
-                                        Regime tsara
+                                        <?php echo($regime->descriRegime); ?>
                                     </td>
                                     <td>
                                         <table class="table">
@@ -41,17 +41,23 @@ $this->load->view('templates/leftAdmin');
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php 
+                                                    $plats = $this->PDFModel->getRegimePlat($regime->idregime);
+                                                    $montant = 0;
+                                                    foreach($plats as $plat) { 
+                                                ?>
                                                 <tr>
                                                     <td>
-                                                        <?php echo "plat 1" ?>
+                                                        <?php echo $plat->descriPlat ?>
                                                     </td>
                                                     <td style="text-align:center">
-                                                        <?php echo "1 kg" ?>
+                                                        <?php echo $plat->quantite." ".$plat->descriUnite ?>
                                                     </td>
                                                     <td class="text-right" style="text-align:center">
-                                                        <?php echo "1000" ?> Ar
+                                                        <?php echo $plat->pu ?> Ar
                                                     </td>
                                                 </tr>
+                                                <?php $montant = $montant + $plat->pu ;} ?>
                                             </tbody>
                                         </table>
                                     </td>
@@ -64,26 +70,31 @@ $this->load->view('templates/leftAdmin');
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php 
+                                                    $activites = $this->PDFModel->getRegimeActivite($regime->idregime);
+                                                    foreach($activites as $activite) { 
+                                                ?>
                                                 <tr>
                                                     <td>
-                                                        <?php echo "activite 1" ?>
+                                                        <?php echo $activite->descriActivite ?>
                                                     </td>
                                                     <td style="text-align:center">
-                                                        <?php echo "10" ?>
+                                                        <?php echo $activite->quantite." fois" ?>
                                                     </td>
                                                 </tr>
+                                                <?php } ?>
                                             </tbody>
                                         </table>
                                     </td>
                                     <td class="text-center">
-                                        <?php echo "10" ?> Jours
+                                        <?php echo $regime->duree ?> Jours
                                     </td>
                                     <td class="text-center">
-                                        <?php echo "15" ?> kg
+                                        <?php echo $regime->poids ?> kg
                                     </td>
                                     <td class="text-center">
                                         <div class="mb-4">
-                                            <?php echo number_format("10000", 2, ",", " "); ?>
+                                            <?php echo number_format($montant, 2, ",", " "); ?>
                                             Ar
                                         </div>
 
@@ -91,13 +102,13 @@ $this->load->view('templates/leftAdmin');
                                     <td class="text-center">
                                         <div>
                                             <button type="button" class="btn btn-outline-info btn-icon-text">
-                                                <a href="<?php echo site_url('regime/update/'."1"); ?>"><i class="mdi mdi-table-edit btn-icon-prepend"></i></a> </button>
+                                                <a href="<?php echo site_url('regime/toUpdate/'.$regime->idregime); ?>"><i class="mdi mdi-table-edit btn-icon-prepend"></i></a> </button>
                                         </div>
                                     </td>
                                     <td class="text-center">
                                         <div>
                                             <button type="button" class="btn btn-outline-warning btn-icon-text">
-                                            <a href="<?php echo site_url('regime/delete/'."1"); ?>" style="color:black;"><i class="mdi mdi-delete-forever btn-icon-prepend"></i></a> </button>
+                                            <a href="<?php echo site_url('regime/delete/'.$regime->idregime); ?>" style="color:black;"><i class="mdi mdi-delete-forever btn-icon-prepend"></i></a> </button>
                                         </div>
                                     </td>
                     </div>

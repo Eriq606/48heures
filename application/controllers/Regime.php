@@ -53,20 +53,40 @@ class Regime extends CI_Controller {
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
+		
+		$this->RegimeModel->deleteRegime($idRegime);
 		redirect('regime/liste');
 	}
 	
-	public function update($idRegime)
+	public function toUpdate($idRegime)
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
+
+		$data['regime'] = $this->RegimeModel->getRegimeById($idRegime);
+		$data['objectifs'] = $this->RegimeModel->getObjectif();
 		$this->load->view('backOffice/regime/updateRegime', $data);
+	}
+
+	public function update()
+	{
+		$idregime=$this->input->post("idregime");
+		$descriRegime=$this->input->post("descriRegime");
+		$duree=$this->input->post("duree");
+		$poids=$this->input->post("poids");
+		$idobjectif=$this->input->post("idobjectif");
+
+		$this->RegimeModel->updateRegime($idregime, $descriRegime, $duree, $idobjectif, $poids);
+		redirect('regime/liste');
 	}
 
 	public function liste()
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
+
+		$data['regimes'] = $this->RegimeModel->getRegime();
+
 		$this->load->view('backOffice/regime/listeRegimes', $data);
 	}
 	
@@ -77,8 +97,9 @@ class Regime extends CI_Controller {
 	public function create()
 	{
 		$data['user']=$this->session->user;
-		$this->load->view('backOffice/regime/createRegime', $data);
-		
+		$data['plats'] = $this->PlatModel->getPlat();
+		$data['activites'] = $this->ActiviteModel->getActivite();
+		$this->load->view('backOffice/regime/createRegime', $data);		
 	}	
 
 }
