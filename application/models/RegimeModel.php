@@ -48,6 +48,8 @@ class RegimeModel extends CI_Model {
         $this->db->where("idregime", $idregime);
         $result=$this->db->get();
         $result=$result->result();
+        $result[0]->regimeplats=$this->getRegimePlatByRegime($result[0]->idregime);
+        $result[0]->regimeActivite=$this->getRegimeActiviteByRegime($result[0]->idregime);
         return $result[0];
     }
 }
