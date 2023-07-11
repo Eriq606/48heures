@@ -82,3 +82,31 @@ CREATE TABLE regimeActivite(
     foreign key (idregime) references regime (idregime),
     foreign key (idactivite) references activite (idactivite)
 );
+create table code(
+    idcode int AUTO_INCREMENT PRIMARY key,
+    descriCode varchar(50),
+    valeur real
+);
+create table etat(
+    idetat int AUTO_INCREMENT PRIMARY key,
+    descriEtat varchar(35)
+);
+CREATE TABLE entreecode(
+    identreecode INT AUTO_INCREMENT PRIMARY KEY,
+    iduser INT,
+    date date,
+    idcode int,
+    idetat int,
+    foreign key (iduser) references utilisateur(iduser),
+    foreign key (idcode) references code(idcode),
+    foreign key (idetat) references etat(idetat)
+);
+create table commanderegime(
+    idcommanderegime int AUTO_INCREMENT PRIMARY key,
+    iduser int,
+    idregime int,
+    montant real,
+    date date,
+    foreign key (iduser) references utilisateur(iduser),
+    foreign key (idregime) references regime(idregime)
+);

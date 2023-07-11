@@ -26,7 +26,7 @@ $this->load->view('templates/left');
                     <img src="<?php echo site_url('assets/images/dashboard/circle.svg'); ?>" class="card-img-absolute" alt="circle-image">
                     <h4 class="font-weight-normal mb-3">Solde actuel <i class="mdi mdi-shopping mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">955 741 Ar</h2>
+                    <h2 class="mb-5"><?php echo number_format($caisse->solde, 2, ",", " "); ?> Ar</h2>
                   </div>
                 </div>
               </div>
@@ -42,54 +42,12 @@ $this->load->view('templates/left');
                         </tr>
                       </thead>
                       <tbody>
+                      <?php foreach($codes as $code){ ?>
                         <tr>
-                          <td> 135af5a1s651asf </td>
-                          <td style="text-align:right"><label class="badge badge-warning" style="color:black;">15 000 Ar</label></td>
+                          <td><?php echo $code->descriCode; ?></td>
+                          <td style="text-align:right"><label class="badge badge-warning" style="color:black;"><?php echo number_format($code->valeur, 2, ",", " "); ?> Ar</label></td>
                         </tr>
-                        <tr>
-                          <td> 135af5a1s651asf </td>
-                          <td style="text-align:right"><label class="badge badge-warning" style="color:black;">15 000 Ar</label></td>
-                        </tr>
-                        <tr>
-                          <td> 135af5a1s651asf </td>
-                          <td style="text-align:right"><label class="badge badge-warning" style="color:black;">15 000 Ar</label></td>
-                        </tr>
-                        <tr>
-                          <td> 135af5a1s651asf </td>
-                          <td style="text-align:right"><label class="badge badge-warning" style="color:black;">15 000 Ar</label></td>
-                        </tr>
-                        <tr>
-                          <td> 135af5a1s651asf </td>
-                          <td style="text-align:right"><label class="badge badge-warning" style="color:black;">15 000 Ar</label></td>
-                        </tr>
-                        <tr>
-                          <td> 135af5a1s651asf </td>
-                          <td style="text-align:right"><label class="badge badge-warning" style="color:black;">15 000 Ar</label></td>
-                        </tr>
-                        <tr>
-                          <td> 135af5a1s651asf </td>
-                          <td style="text-align:right"><label class="badge badge-warning" style="color:black;">15 000 Ar</label></td>
-                        </tr>
-                        <tr>
-                          <td> 135af5a1s651asf </td>
-                          <td style="text-align:right"><label class="badge badge-warning" style="color:black;">15 000 Ar</label></td>
-                        </tr>
-                        <tr>
-                          <td> 135af5a1s651asf </td>
-                          <td style="text-align:right"><label class="badge badge-warning" style="color:black;">15 000 Ar</label></td>
-                        </tr>
-                        <tr>
-                          <td> 135af5a1s651asf </td>
-                          <td style="text-align:right"><label class="badge badge-warning" style="color:black;">15 000 Ar</label></td>
-                        </tr>
-                        <tr>
-                          <td> 135af5a1s651asf </td>
-                          <td style="text-align:right"><label class="badge badge-warning" style="color:black;">15 000 Ar</label></td>
-                        </tr>
-                        <tr>
-                          <td> 135af5a1s651asf </td>
-                          <td style="text-align:right"><label class="badge badge-warning" style="color:black;">15 000 Ar</label></td>
-                        </tr>
+                      <?php } ?>
                       </tbody>
                     </table>
                   </div>

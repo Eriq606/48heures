@@ -22,6 +22,10 @@ class Code extends CI_Controller {
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
+		$codes=$this->CodeModel->getAllCode();
+		$data['codes']=$codes;
+		$caisse=$this->PortefeuilleModel->getCaisseForProfile($user->iduser);
+		$data['caisse']=$caisse;
 		$this->load->view('frontOffice/code/recharge', $data);
 	}	
 	
