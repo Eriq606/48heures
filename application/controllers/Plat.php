@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Code extends CI_Controller {
+class Plat extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,25 +20,35 @@ class Code extends CI_Controller {
 	 */
 	public function index()
 	{
-		$user=$this->session->user;
-		$data['user']=$user;
-		$codes=$this->CodeModel->getAllCode();
-		$data['codes']=$codes;
-		$caisse=$this->PortefeuilleModel->getCaisseForProfile($user->iduser);
-		$data['caisse']=$caisse;
-		$this->load->view('frontOffice/code/recharge', $data);
+		$this->load->view('welcome_message');
+		
 	}	
 
-	public function toValidate() {
+    public function delete($idPlat)
+	{
 		$user=$this->session->user;
 		$data['user']=$user;
-		$this->load->view('backOffice/code/validation', $data);
-	}
-
-	public function validate($idCode) {
-		$user=$this->session->user;
-		$data['user']=$user;
-		$this->load->view('backOffice/code/validation', $data);
+		redirect('plat/liste');
 	}
 	
+	public function update($idPlat)
+	{
+		$user=$this->session->user;
+		$data['user']=$user;
+		$this->load->view('backOffice/plat/updatePlat', $data);
+	}
+    
+    public function create()
+	{
+		$data['user']=$this->session->user;
+		$this->load->view('backOffice/plat/createPlat', $data);
+		
+	}
+    
+    public function liste()
+	{
+		$user=$this->session->user;
+		$data['user']=$user;
+		$this->load->view('backOffice/plat/listePlats', $data);
+	}
 }

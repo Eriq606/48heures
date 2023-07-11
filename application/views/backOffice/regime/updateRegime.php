@@ -10,15 +10,15 @@ $this->load->view('templates/leftAdmin');
             <div class="col-md-6 grid-margin stretch-card" style="margin: auto auto;">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Creer un regime</h4>
+                        <h4 class="card-title">Modifier un regime</h4>
                         <p class="card-description"> Remplissez le formulaire </p>
                         <form class="forms-sample">
                             <div class="form-group">
                                 <label for="duree">durée en jour</label>
-                                <input type="number" class="form-control" id="duree" placeholder="duree" required>
+                                <input type="number" class="form-control" id="duree" placeholder="duree" value="duree par defaut" required>
                                 <div class="form-group">
                                     <label for="poids">Poids en kg</label>
-                                    <input type="number" class="form-control" id="poids" placeholder="votre poids"
+                                    <input type="number" class="form-control" id="poids" value="poids par defaut" placeholder="votre poids"
                                         step="0.1" required>
                                 </div>
                                 <div class="form-group">
@@ -149,7 +149,7 @@ $this->load->view('templates/leftAdmin');
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-gradient-primary me-2">Creer</button>
+                                <button type="submit" class="btn btn-gradient-primary me-2">Modifier</button>
                         </form>
                     </div>
                 </div>

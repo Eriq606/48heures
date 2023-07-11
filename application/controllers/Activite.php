@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Code extends CI_Controller {
+class Activite extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -22,23 +22,21 @@ class Code extends CI_Controller {
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
-		$codes=$this->CodeModel->getAllCode();
-		$data['codes']=$codes;
-		$caisse=$this->PortefeuilleModel->getCaisseForProfile($user->iduser);
-		$data['caisse']=$caisse;
-		$this->load->view('frontOffice/code/recharge', $data);
+		$this->load->view('backOffice/activite/createAndList', $data);
 	}	
 
-	public function toValidate() {
+    public function delete($idActivite)
+	{
 		$user=$this->session->user;
 		$data['user']=$user;
-		$this->load->view('backOffice/code/validation', $data);
+		redirect('activite');
 	}
-
-	public function validate($idCode) {
+	
+	public function update($idActivite)
+	{
 		$user=$this->session->user;
 		$data['user']=$user;
-		$this->load->view('backOffice/code/validation', $data);
+		$this->load->view('backOffice/activite/updateActivite', $data);
 	}
 	
 }

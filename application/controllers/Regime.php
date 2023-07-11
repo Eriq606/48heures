@@ -35,6 +35,28 @@ class Regime extends CI_Controller {
 		$data['marge']=$marge;
 		$this->load->view('frontOffice/regime/selectionRegimes', $data);
 	}	
+
+	public function delete($idRegime)
+	{
+		$user=$this->session->user;
+		$data['user']=$user;
+		redirect('regime/liste');
+	}
+	
+	public function update($idRegime)
+	{
+		$user=$this->session->user;
+		$data['user']=$user;
+		$this->load->view('backOffice/regime/updateRegime', $data);
+	}
+
+	public function liste()
+	{
+		$user=$this->session->user;
+		$data['user']=$user;
+		$this->load->view('backOffice/regime/listeRegimes', $data);
+	}
+	
 	public function modifierMarge(){
 
 	}
