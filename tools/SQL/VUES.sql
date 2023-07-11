@@ -36,12 +36,12 @@ create or replace view v_nbuser as
     from utilisateur;
 
 create or replace view v_nbobjectif as
-    select idobjectif, count(idprofileobjectif) as nombre
-    from profileobjectif
+    select idobjectif, count(idprofileObjectif) as nombre
+    from profileObjectif
     group by idobjectif;
 
 create or replace view v_objectifstat as
-    select v_nbobjectif.*, nombre*100/(select count(idprofileobjectif) from profileobjectif), objectif.descriObjectif
+    select v_nbobjectif.*, nombre*100/(select count(idprofileObjectif) from profileObjectif), objectif.descriObjectif
     from v_nbobjectif
     join objectif on v_nbobjectif.idobjectif=objectif.idobjectif;
 
