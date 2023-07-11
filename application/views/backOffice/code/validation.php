@@ -52,56 +52,6 @@ $this->load->view('templates/leftAdmin');
                 </div>
                 </tr>
                 <?php } ?>
-                <tr>
-                                    <td>
-                                        16-07-2023
-                                    </td>
-                                    <td>
-                                        yoan 2
-                                    </td>
-                                    <td style="text-align:center;">
-                                        1354a6sd
-                                    </td>
-                                    <td style="text-align:right">
-                                        10 000 Ar
-                                    </td>
-                                    <td style="text-align:center;"><label class="badge badge-success">validé</label>
-                                    </td>
-                                    <td class="text-center">
-                                        <div>
-                                            
-                                        </div>
-                                    </td>
-                    </div>
-
-                </div>
-
-                </tr>
-                <tr>
-                                    <td>
-                                        16-07-2023
-                                    </td>
-                                    <td>
-                                        yoan 3
-                                    </td>
-                                    <td style="text-align:center;">
-                                        1354a6sd
-                                    </td>
-                                    <td style="text-align:right">
-                                        10 000 Ar
-                                    </td>
-                                    <td style="text-align:center;"><label class="badge badge-warning">déjà pris</label>
-                                    </td>
-                                    <td class="text-center">
-                                        <div>
-                                            
-                                        </div>
-                                    </td>
-                    </div>
-
-                </div>
-
-                </tr>
                 </tbody>
                 </table>
             </div>

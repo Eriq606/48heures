@@ -34,13 +34,6 @@ class CodeModel extends CI_Model {
         $this->db->from("v_code");
         $result=$this->db->get();
         $result=$result->result();
-        foreach($result as $r){
-            switch($r->idEtat){
-                case 1:
-                    $r->html="disabled"
-                    break;
-            }
-        }
         return $result;
     }
 }
