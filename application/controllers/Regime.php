@@ -35,7 +35,7 @@ class Regime extends CI_Controller {
 		$data['objectif']=$dernierObjectif;
 		$data['regimes']=$regimes;
 		$data['marge']=$marge;
-		$data['erreur']=$erreur;
+		$data['erreur']=str_replace(['_']," ",$erreur);
 		$this->load->view('frontOffice/regime/selectionRegimes', $data);
 	}
 	public function commander($idregime){
