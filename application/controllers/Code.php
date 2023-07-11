@@ -40,8 +40,9 @@ class Code extends CI_Controller {
 	public function validate($idCode) {
 		$user=$this->session->user;
 		$data['user']=$user;
-		
-		$this->load->view('backOffice/code/validation', $data);
+		$etat=11;
+		$this->CodeModel->updateEntreeCode($idCode, $etat);
+		redirect('code/toValidate');
 	}
 	public function entreeCode(){
 		$codestr=$this->input->post('codestr');

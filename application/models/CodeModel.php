@@ -46,7 +46,11 @@ class CodeModel extends CI_Model {
         return $result;
     }
     public function updateEntreeCode($identreecode, $idetat){
-        $array=
+        $array=array(
+            'idetat' => $idetat
+        );
+        $this->db->where("identreecode", $identreecode);
+        $this->db->update("entreecode", $array);
     }
 }
 
