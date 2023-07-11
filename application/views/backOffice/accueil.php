@@ -1,6 +1,6 @@
 <?php
-$this->load->view('templates/header');
-$this->load->view('templates/left');
+$this->load->view('templates/headerAdmin');
+$this->load->view('templates/leftAdmin');
 ?> 
 
 <div class="main-panel">
@@ -337,5 +337,5 @@ $this->load->view('templates/left');
 
 
 <?php 
-$this->load->view('templates/footer');
+$this->load->view('templates/footerAdmin');
 ?>

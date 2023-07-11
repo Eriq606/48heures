@@ -1,5 +1,8 @@
 .DS_Store
 
+system
+ITU-S4-PROJET-48h-20230710-partie1.pdf
+
 application/cache/*
 !application/cache/index.html
 !application/cache/.htaccess
