@@ -28,5 +28,17 @@ class Code extends CI_Controller {
 		$data['caisse']=$caisse;
 		$this->load->view('frontOffice/code/recharge', $data);
 	}	
+
+	public function toValidate() {
+		$user=$this->session->user;
+		$data['user']=$user;
+		$this->load->view('backOffice/code/validation', $data);
+	}
+
+	public function validate($idCode) {
+		$user=$this->session->user;
+		$data['user']=$user;
+		$this->load->view('backOffice/code/validation', $data);
+	}
 	
 }
