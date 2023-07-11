@@ -141,5 +141,6 @@ $autoload['model'] = array(
     'ActiviteModel' => 'ActiviteModel',
     'PDFModel' => 'PDFModel',
     'CodeModel' => 'CodeModel',
-    'PortefeuilleModel' => 'PortefeuilleModel'
+    'PortefeuilleModel' => 'PortefeuilleModel',
+    'DashboardModel' => 'DashboardModel'
 );
