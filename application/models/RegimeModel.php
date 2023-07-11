@@ -128,7 +128,7 @@ class RegimeModel extends CI_Model {
     public function saveRegimePlat($idregime, $plat, $quantite){
         $data = array(
             'idregime' => $idregime,
-            'plat' => $plat,
+            'idplat' => $plat,
             'quantite' => $quantite
         );   
     
@@ -138,6 +138,12 @@ class RegimeModel extends CI_Model {
     public function deleteRegime($idregime) {
         $this->db->where('idregime', $idregime);
         $this->db->delete('regime');
+    }
+    public function getLastId(){
+        $query="select max(idregime) as id from regime";
+        $result=$this->db->query($query);
+        $result=$result->result();
+        return $result[0];
     }
 }
 
