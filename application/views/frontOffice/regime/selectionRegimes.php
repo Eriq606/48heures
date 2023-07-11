@@ -7,7 +7,7 @@ $this->load->view('templates/left');
 <div class="main-panel">
   <div class="content-wrapper">
     <div class="page-header">
-      <h3 class="page-title"> Regimes suggerés </h3>
+      <h3 class="page-title"> Regimes suggerés selon le dernier objectif </h3>
     </div>
     <div class="row">
       <div class="col-md-6 grid-margin stretch-card">
@@ -114,8 +114,10 @@ $this->load->view('templates/left');
                       <?php echo number_format($this->RegimeModel->getMontantTotal($r), 2, ",", " "); ?> Ar
                     </div>
                     <div>
+                    <a href="regime/commander/<?php echo $r->idregime; ?>">
                       <button type="button" class="btn btn-outline-success btn-icon-text">
-                        <a href="regime/commander/<?php echo $r->idregime; ?>"><i class="mdi mdi-shopping  btn-icon-prepend"></i> Commander</a></button>
+                       <i class="mdi mdi-shopping  btn-icon-prepend"></i> Commander</button>
+                       </a>
                   </td>
           </div>
 
