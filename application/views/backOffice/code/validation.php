@@ -42,8 +42,8 @@ $this->load->view('templates/leftAdmin');
                                     </td>
                                     <td class="text-center">
                                         <div>
-                                            <button type="button" class="btn btn-outline-warning btn-icon-text">
-                                                <a href="<?php echo site_url('code/validate/' . "1"); ?>"
+                                            <button type="button" class="btn btn-outline-warning btn-icon-text" <?php echo $e->html; ?>>
+                                                <a href="<?php echo site_url('code/validate/' . $e->identreecode); ?>"
                                                     style="color:black;"><i
                                                         class="mdi mdi-check-circle btn-icon-prepend"></i></a> </button>
                                         </div>

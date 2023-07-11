@@ -1,5 +1,5 @@
 CREATE or replace view v_regimeplat as
-    select r.idregime, reg.descriRegime, p.descriPlat, r.quantite, u.descriUnite, p.pu, reg.poids, reg.duree from regimePlat r 
+    select r.idregime, reg.descriRegime, p.idplat, p.descriPlat, r.quantite, u.descriUnite, p.pu, reg.poids, reg.duree from regimePlat r 
     join plat p on r.idplat=p.idplat join unite u on u.idunite=p.idunite join regime reg on reg.idregime=r.idregime;
 
 
@@ -22,10 +22,11 @@ create or replace view v_totaldepense as
     group by utilisateur.iduser, utilisateur.nom;
 
 create or replace view v_code as
-    select entreecode.*, code.descriCode, code.valeur, utilisateur.nom
+    select entreecode.*, code.descriCode, code.valeur, utilisateur.nom, etat.descriEtat
     from entreecode
     join code on entreecode.idcode=code.idcode
-    join utilisateur on entreecode.iduser=utilisateur.iduser;
+    join utilisateur on entreecode.iduser=utilisateur.iduser
+    join etat on entreecode.idetat=etat=idetat;
 
 create or replace view v_plat as
     select plat.*, descriUnite from plat join unite on unite.idunite=plat.idunite;
