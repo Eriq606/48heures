@@ -12,11 +12,11 @@ $this->load->view('templates/leftAdmin');
                     <div class="card-body">
                         <h4 class="card-title">Creer une activité</h4>
                         <p class="card-description"> Remplissez le formulaire </p>
-                        <form class="forms-sample">
+                        <form class="forms-sample" method="post" action="<?php echo site_url('activite/create'); ?>">
                             <div class="form-group">
                                 <div class="form-group">
                                     <label for="description">description</label>
-                                    <input type="text" class="form-control" id="description" placeholder="description de l'activité"
+                                    <input name="descriActivite" type="text" class="form-control" id="description" placeholder="description de l'activité"
                                         required>
                                 </div>
                                 <button type="submit" class="btn btn-gradient-primary me-2">Creer</button>
@@ -34,21 +34,21 @@ $this->load->view('templates/leftAdmin');
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php for($i = 0; $i < 3; $i++) { ?>
+                                <?php foreach ($activites as $activite) { ?>
                                 <tr>
                                     <td>
-                                        activité tsara
+                                        <?php echo($activite->descriActivite); ?>
                                     </td>
                                     <td class="text-center">
                                         <div>
                                             <button type="button" class="btn btn-outline-info btn-icon-text">
-                                                <a href="<?php echo site_url('activite/update/'."1"); ?>"><i class="mdi mdi-table-edit btn-icon-prepend"></i></a> </button>
+                                                <a href="<?php echo site_url('activite/toUpdate/'.$activite->idactivite); ?>"><i class="mdi mdi-table-edit btn-icon-prepend"></i></a> </button>
                                         </div>
                                     </td>
                                     <td class="text-center">
                                         <div>
                                             <button type="button" class="btn btn-outline-warning btn-icon-text">
-                                            <a href="<?php echo site_url('activite/delete/'."1"); ?>" style="color:black;"><i class="mdi mdi-delete-forever btn-icon-prepend"></i></a> </button>
+                                            <a href="<?php echo site_url('activite/delete/'.$activite->idactivite); ?>" style="color:black;"><i class="mdi mdi-delete-forever btn-icon-prepend"></i></a> </button>
                                         </div>
                                     </td>
                                 </tr>
