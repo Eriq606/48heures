@@ -42,10 +42,11 @@ class Regime extends CI_Controller {
 		$user=$this->session->user;
 		$regime=$this->RegimeModel->getRegimeById($idregime);
 		$commande=$this->PortefeuilleModel->commanderRegime($user, $regime);
-		if(!$commande){
+		if($commande===false){
 			redirect('regime/index/Le_regime_est_trop_cher');
+		}else{
+			redirect('regime');
 		}
-		redirect('regime');
 	}
 
 	public function delete($idRegime)
