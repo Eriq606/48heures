@@ -30,3 +30,27 @@ create or replace view v_code as
 
 create or replace view v_plat as
     select plat.*, descriUnite from plat join unite on unite.idunite=plat.idunite;
+
+create or replace view v_nbuser as
+    select count(iduser) as nombre
+    from utilisateur;
+
+create or replace view v_nbobjectif as
+    select idobjectif, count(idprofileobjectif) as nombre
+    from profileobjectif
+    group by idobjectif;
+
+create or replace view v_objectifstat as
+    select v_nbobjectif.*, nombre*100/(select count(idprofileobjectif) from profileobjectif), objectif.descriObjectif
+    from v_nbobjectif
+    join objectif on v_nbobjectif.idobjectif=objectif.idobjectif;
+
+create or replace view v_nbcommanderegime as
+    select commanderegime.idregime, count(commanderegime.idcommanderegime) as nombre, regime.descriRegime
+    from commanderegime
+    join regime on commanderegime.idregime=regime.idregime
+    group by commanderegime.idregime, regime.descriRegime;
+
+create or replace view v_caisse as
+    select sum(montant) as somme
+    from commanderegime;
