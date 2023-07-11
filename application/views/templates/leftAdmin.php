@@ -31,7 +31,7 @@
                 <span class="menu-title">liste des regimes</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
-              <a class="nav-link" href="<?php echo site_url('plat/toCreate'); ?>">
+              <a class="nav-link" href="<?php echo site_url('plat/create'); ?>">
                 <span class="menu-title">Creer un plat</span>
                 <i class="mdi mdi-library-plus menu-icon"></i>
               </a>

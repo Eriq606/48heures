@@ -42,9 +42,11 @@ class Login extends CI_Controller {
         $nom = $this->input->post('nom');
         $mdp = $this->input->post('mdp');
         
-        $resultat = $this->LoginModel->inscription($nom, $mdp);
+        $inscrit = $this->LoginModel->inscription($nom, $mdp);
+		$resultat = $this->LoginModel->verifylogin($nom, $mdp);
+		$this->session->set_userdata("user", $resultat);
         
-        $this->load->view('frontOffice/accueil');
+        redirect('profile/init');
     }
 
 }

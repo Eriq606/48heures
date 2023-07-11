@@ -57,6 +57,8 @@ class Code extends CI_Controller {
 		if(!$enregistre){
 			redirect('code/index/Le_code_a_deja_ete_utilise');
 		}
-		redirect('code');
+		else {
+			redirect('code');
+		}
 	}
 }
