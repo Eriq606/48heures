@@ -146,7 +146,30 @@ class Regime extends CI_Controller {
 		$data['user']=$this->session->user;
 		$data['plats'] = $this->PlatModel->getPlat();
 		$data['activites'] = $this->ActiviteModel->getActivite();
+		$data['objectifs'] = $this->ObjectifModel->getObjectifs();
 		$this->load->view('backOffice/regime/createRegime', $data);		
 	}	
-
+	public function toCreate(){
+		$duree=$this->input->post('duree');
+		$poids=$this->input->post('poids');
+		$objectif=$this->input->post('optionsRadios');
+		$activites=$this->input->post('activite');
+		$plats=$this->input->post('plat');
+		if(!isset($plats)||!isset($activites)){
+			redirect("regime/create");
+		}
+		$quantites=[];
+		foreach($plats as $p){
+			if($this->input->post('quantite'.$p)>0){
+				array_push($quantites, $this->input->post('quantite'.$p));
+			}
+		}
+		$frequences=[];
+		foreach($activites as $a){
+			if($this->input->post('frequence'.$a)>0){
+				array_push($frequences, $this->input->post('frequence'.$a));
+			}
+		}
+		
+	}
 }
