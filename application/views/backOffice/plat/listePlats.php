@@ -23,27 +23,27 @@ $this->load->view('templates/leftAdmin');
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($plats as $plat) { ?>
+                                <?php for($i = 0; $i < 3; $i++) { ?>
                                 <tr>
                                     <td>
-                                        <?php echo($plat->descriPlat); ?>
+                                        plat tsara
                                     </td>
                                     <td style="text-align:right">
-                                        <?php echo($plat->pu); ?> Ar
+                                        1 000 Ar
                                     </td>
                                     <td>
-                                        <?php echo($plat->descriUnite); ?>
+                                        kg
                                     </td>
                                     <td class="text-center">
                                         <div>
                                             <button type="button" class="btn btn-outline-info btn-icon-text">
-                                                <a href="<?php echo site_url('plat/toUpdate/'.$plat->idplat); ?>"><i class="mdi mdi-table-edit btn-icon-prepend"></i></a> </button>
+                                                <a href="<?php echo site_url('plat/update/'."1"); ?>"><i class="mdi mdi-table-edit btn-icon-prepend"></i></a> </button>
                                         </div>
                                     </td>
                                     <td class="text-center">
                                         <div>
                                             <button type="button" class="btn btn-outline-warning btn-icon-text">
-                                            <a href="<?php echo site_url('plat/delete/'.$plat->idplat); ?>" style="color:black;"><i class="mdi mdi-delete-forever btn-icon-prepend"></i></a> </button>
+                                            <a href="<?php echo site_url('plat/delete/'."1"); ?>" style="color:black;"><i class="mdi mdi-delete-forever btn-icon-prepend"></i></a> </button>
                                         </div>
                                     </td>
                     </div>

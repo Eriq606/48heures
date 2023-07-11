@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="<?php echo site_url('assets/css/style.css'); ?>">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?php echo site_url('assets/images/favicon.ico'); ?>" />
+
   </head>
   <body>
     <div class="container-scroller">

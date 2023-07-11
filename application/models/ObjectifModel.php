@@ -22,6 +22,13 @@ class ObjectifModel extends CI_Model {
         }
         return null;
     }
+    public function getObjectifs(){
+        $this->db->select("*");
+        $this->db->from("objectif");
+        $result=$this->db->get();
+        $result=$result->result();
+        return $result;
+    }
 }
 
 ?>

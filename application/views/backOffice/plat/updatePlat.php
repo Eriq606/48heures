@@ -12,26 +12,25 @@ $this->load->view('templates/leftAdmin');
                     <div class="card-body">
                         <h4 class="card-title">Modifier un plat</h4>
                         <p class="card-description"> Remplissez le formulaire </p>
-                        <form class="forms-sample" method="post" action="<?php echo site_url('plat/update'); ?>">
+                        <form class="forms-sample">
                             <div class="form-group">
+                                <label for="duree">durée en jour</label>
+                                <input type="number" class="form-control" id="duree" placeholder="duree" value="duree par defaut" required>
                                 <div class="form-group">
-                                    <input name="idplat" type="hidden" value="<?php echo($plat->idplat); ?>">
                                     <label for="description">description</label>
-                                    <input name="descriPLat" type="text" class="form-control" id="description" placeholder="description du plat"
-                                    value="<?php echo($plat->descriPlat); ?>"  required>
+                                    <input type="text" class="form-control" id="description" placeholder="description du plat"
+                                    value="description par defaut"  required>
                                 </div>
                                 <div class="form-group">
                                     <label for="prixUnitaire">Prix unitaire</label>
-                                    <input name="pu" type="number" class="form-control" id="prixUnitaire" placeholder="prix unitaire du plat"
-                                    value="<?php echo($plat->pu); ?>" step="0.1"  required>
+                                    <input type="number" class="form-control" id="prixUnitaire" placeholder="prix unitaire du plat"
+                                    value="prix unitaire par defaut" step="0.1"  required>
                                 </div>
                                 <div class="form-group">
                                     <label for="unite" style="margin-right:15px;">Unite</label>
-                                    <select name="idunite" id="unite" >
-                                        <option value="<?php echo($plat->idunite); ?>"><?php echo($plat->descriUnite); ?></option>
-                                        <?php foreach ($unites as $unite) { ?>
-                                            <option value="<?php echo($unite->idunite); ?>"><?php echo($unite->descriUnite); ?></option>
-                                        <?php } ?>
+                                    <select name="unite" id="unite">
+                                        <option value="1">Kg</option>
+                                        <option value="1">Kg</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-gradient-primary me-2">Modifier</button>

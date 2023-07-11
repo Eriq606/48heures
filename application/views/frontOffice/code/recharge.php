@@ -11,6 +11,11 @@ $this->load->view('templates/left');
             <div class="card">
                 <div class="card-body">
                 <h4 class="card-title">Recharger mon compte</h4>
+                <p>
+                  <h6 style="color:green;">
+                  Votre demande de recharge requiert la validation de l'administrateur
+                  </h6>
+                </p>
                 <form class="forms-sample" method="post" action="<?php echo site_url('code/entreeCode'); ?>">
                     <div class="form-group">
                     <input type="text" class="form-control" id="code" name="codestr" placeholder="votre code de recharge"  required>

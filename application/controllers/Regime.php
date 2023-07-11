@@ -42,11 +42,123 @@ class Regime extends CI_Controller {
 		$user=$this->session->user;
 		$regime=$this->RegimeModel->getRegimeById($idregime);
 		$commande=$this->PortefeuilleModel->commanderRegime($user, $regime);
-		if($commande===false){
+		
+		if($commande===false){			
 			redirect('regime/index/Le_regime_est_trop_cher');
 		}else{
-			redirect('regime');
+			redirect('regime/toPDF/'.$idregime);
+		} 
+	}
+
+	public function toPdf($idregime){
+		$user=$this->session->user;		
+		$data['user']=$user;
+		$data['idregime'] = $idregime;
+		$this->load->view('frontOffice/regime/pdf', $data);
+	}
+
+	public function voirPdf($idregime){
+		$user=$this->session->user;
+		require_once(APPPATH . 'libraries/fpdf/fpdf.php');
+		$montant = 0;
+		$data = array();
+		$plats = $this->PDFModel->getRegimePlat($idregime);
+		$activites = $this->PDFModel->getRegimeActivite($idregime);
+
+		$pdf = new FPDF();
+		$pdf->AddPage();
+
+		$pdf->SetFont('Arial', 'BI', 24);
+		$pdf->Cell(0, 20, $plats[0]->descriRegime, 0, 5, 'C');
+		$pdf->SetFont('Arial', 'BU', 14);
+		
+		$pdf->Cell(0,15,'Menus :',0, 1);
+		$pdf->SetFont('Arial', '', 14);
+		foreach($plats as $plat){
+			$pdf->Cell(125, 8, $plat->descriPlat, 0, 0, 'L');
+			$pdf->Cell(15, 8, $plat->quantite, 0, 0, 'R');
+			$pdf->Cell(10, 8, $plat->descriUnite, 0, 0, 'L');
+			$pdf->Cell(30, 8, number_format($plat->pu, 2, ",", " "), 0, 0, 'R');
+			$pdf->Cell(10, 8, 'Ar', 0, 1, 'L');
+			$montant = $montant + ( $plat->pu * $plat->quantite );
 		}
+
+		$pdf->SetFont('Arial', 'BU', 14);
+		$pdf->Cell(0,15,'Activite(s) sportive(s) :',0, 1);
+		$pdf->SetFont('Arial', '', 14);
+		foreach($activites as $activite){
+			$pdf->Cell(125, 8, $activite->descriActivite, 0, 0, 'L');
+			$pdf->Cell(15, 8, $activite->quantite, 0, 0, 'R');
+			$pdf->Cell(10, 8, 'fois', 0, 1, 'L');
+		}
+
+		$pdf->SetFont('Arial', 'BU', 14);
+		$pdf->Cell(125,15,'Duree :',0, 0);
+		$pdf->SetFont('Arial', '', 14);
+		$pdf->Cell(15, 15, $plats[0]->duree, 0, 0, 'R');
+		$pdf->Cell(10, 15, 'jour(s)', 0, 1, 'L');
+
+		$montant = $montant * $plats[0]->duree;
+
+		$pdf->SetFont('Arial', 'BU', 14);
+		$pdf->Cell(125,15,'Montant total :',0, 0);
+		$pdf->SetFont('Arial', '', 14);
+		$pdf->Cell(15, 15, number_format($montant, 2, ",", " "), 0, 0, 'R');
+		$pdf->Cell(10, 15, 'Ar', 0, 1, 'L');
+
+		$pdf->Output('Regime.pdf', 'I');  
+	}
+
+	public function telechargerPdf($idregime){
+		$user=$this->session->user;
+		require_once(APPPATH . 'libraries/fpdf/fpdf.php');
+		$montant = 0;
+		$data = array();
+		$plats = $this->PDFModel->getRegimePlat($idregime);
+		$activites = $this->PDFModel->getRegimeActivite($idregime);
+
+		$pdf = new FPDF();
+		$pdf->AddPage();
+
+		$pdf->SetFont('Arial', 'BI', 24);
+		$pdf->Cell(0, 20, $plats[0]->descriRegime, 0, 5, 'C');
+		$pdf->SetFont('Arial', 'BU', 14);
+		
+		$pdf->Cell(0,15,'Menus :',0, 1);
+		$pdf->SetFont('Arial', '', 14);
+		foreach($plats as $plat){
+			$pdf->Cell(125, 8, $plat->descriPlat, 0, 0, 'L');
+			$pdf->Cell(15, 8, $plat->quantite, 0, 0, 'R');
+			$pdf->Cell(10, 8, $plat->descriUnite, 0, 0, 'L');
+			$pdf->Cell(30, 8, number_format($plat->pu, 2, ",", " "), 0, 0, 'R');
+			$pdf->Cell(10, 8, 'Ar', 0, 1, 'L');
+			$montant = $montant + ( $plat->pu * $plat->quantite );
+		}
+
+		$pdf->SetFont('Arial', 'BU', 14);
+		$pdf->Cell(0,15,'Activite(s) sportive(s) :',0, 1);
+		$pdf->SetFont('Arial', '', 14);
+		foreach($activites as $activite){
+			$pdf->Cell(125, 8, $activite->descriActivite, 0, 0, 'L');
+			$pdf->Cell(15, 8, $activite->quantite, 0, 0, 'R');
+			$pdf->Cell(10, 8, 'fois', 0, 1, 'L');
+		}
+
+		$pdf->SetFont('Arial', 'BU', 14);
+		$pdf->Cell(125,15,'Duree :',0, 0);
+		$pdf->SetFont('Arial', '', 14);
+		$pdf->Cell(15, 15, $plats[0]->duree, 0, 0, 'R');
+		$pdf->Cell(10, 15, 'jour(s)', 0, 1, 'L');
+
+		$montant = $montant * $plats[0]->duree;
+
+		$pdf->SetFont('Arial', 'BU', 14);
+		$pdf->Cell(125,15,'Montant total :',0, 0);
+		$pdf->SetFont('Arial', '', 14);
+		$pdf->Cell(15, 15, number_format($montant, 2, ",", " "), 0, 0, 'R');
+		$pdf->Cell(10, 15, 'Ar', 0, 1, 'L');
+
+		$pdf->Output('Regime.pdf', 'D');  
 	}
 
 	public function delete($idRegime)
@@ -99,7 +211,42 @@ class Regime extends CI_Controller {
 		$data['user']=$this->session->user;
 		$data['plats'] = $this->PlatModel->getPlat();
 		$data['activites'] = $this->ActiviteModel->getActivite();
+		$data['objectifs'] = $this->ObjectifModel->getObjectifs();
 		$this->load->view('backOffice/regime/createRegime', $data);		
 	}	
-
+	public function toCreate(){
+		$duree=$this->input->post('duree');
+		$descriRegime=$this->input->post('descriRegime');
+		$poids=$this->input->post('poids');
+		$objectif=$this->input->post('optionsRadios');
+		$activites=$this->input->post('activite');
+		$plats=$this->input->post('plat');
+		if(!isset($plats)||!isset($activites)){
+			redirect("regime/create");
+		}
+		$quantites=[];
+		foreach($plats as $p){
+			if($this->input->post('quantite'.$p)>0){
+				array_push($quantites, $this->input->post('quantite'.$p));
+			}
+		}
+		$frequences=[];
+		foreach($activites as $a){
+			if($this->input->post('frequence'.$a)>0){
+				array_push($frequences, $this->input->post('frequence'.$a));
+			}
+		}
+		if(count($quantites)==0||count($frequences)==0){
+			redirect("regime/create");
+		}
+		$this->RegimeModel->saveRegime($descriRegime, $duree, $objectif, $poids);
+		$lastId=$this->RegimeModel->getLastId();
+		for($i=0; $i<count($plats); $i++){
+			$this->RegimeModel->saveRegimePlat($lastId->id, $plats[$i], $quantites[$i]);
+		}
+		for($i=0; $i<count($activites); $i++){
+			$this->RegimeModel->saveRegimeActivite($lastId->id, $activites[$i], $frequences[$i]);
+		}
+		redirect('regime/liste');
+	}
 }

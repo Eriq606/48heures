@@ -18,6 +18,7 @@ class Profile extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
 	public function index()
 	{
 		$data['user']=$this->session->user;
@@ -25,6 +26,15 @@ class Profile extends CI_Controller {
 		$data['genre'] = $genre;
 		$this->load->view('frontOffice/profile/profileUtilisateur', $data);
 	}	
+
+	public function init()
+	{
+		$data['user']=$this->session->user;
+		$genre = $this->ProfileModel->getGenre();    
+		$data['genre'] = $genre;
+		$this->load->view('frontOffice/profile/profileInit', $data);
+	}	
+
 	public function toProfile(){
         $genre = $this->ProfileModel->getGenre();        
         $user = $this->ProfileModel->getUser(); // test fa tsy ilaina
