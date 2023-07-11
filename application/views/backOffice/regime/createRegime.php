@@ -14,6 +14,11 @@ $this->load->view('templates/leftAdmin');
                         <p class="card-description"> Remplissez le formulaire </p>
                         <form class="forms-sample" action="<?php echo site_url('regime/toCreate'); ?>" method="post">
                             <div class="form-group">
+                                <div class="form-group">
+                                    <label for="poids">Nom du regime</label>
+                                    <input type="text" class="form-control" id="poids" placeholder="descriRegime"
+                                        required name="descriRegime">
+                                </div>
                                 <label for="duree">durée en jour</label>
                                 <input type="number" class="form-control" id="duree" placeholder="duree" required name="duree">
                                 <div class="form-group">

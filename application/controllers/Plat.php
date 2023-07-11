@@ -24,66 +24,31 @@ class Plat extends CI_Controller {
 		
 	}	
 
-    public function delete($idplat)
+    public function delete($idPlat)
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
-
-		$this->PlatModel->deletePlat($idplat);
-
 		redirect('plat/liste');
-	}
-
-	public function toUpdate($idPlat)
-	{
-		$user=$this->session->user;
-		$data['user']=$user;
-
-		$data['plat'] = $this->PlatModel->getPlatById($idPlat);
-		$data['unites'] = $this->PlatModel->getUnite();
-
-		$this->load->view('backOffice/plat/updatePlat', $data);
 	}
 	
-	public function update()
-	{
-		$idplat = $this->input->post('idplat');
-		$descriPLat = $this->input->post('descriPLat');
-		$pu = $this->input->post('pu');
-		$idunite = $this->input->post('idunite');
-
-		$this->PlatModel->updatePlat($idplat, $descriPLat, $pu, $idunite);
-
-		redirect('plat/liste');
-	}
-
-	public function toCreate()
+	public function update($idPlat)
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
-		$data['unites'] = $this->PlatModel->getUnite();
-		$this->load->view('backOffice/plat/createPlat', $data);
+		$this->load->view('backOffice/plat/updatePlat', $data);
 	}
     
     public function create()
 	{
 		$data['user']=$this->session->user;
-
-		$descriPlat = $this->input->post('descriPlat');
-		$pu = $this->input->post('pu');
-		$idunite = $this->input->post('idunite');
-		$this->PlatModel->savePlat($descriPlat, $pu, $idunite);
+		$this->load->view('backOffice/plat/createPlat', $data);
 		
-		redirect('plat/liste');
 	}
     
     public function liste()
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
-
-		$data['plats'] = $this->PlatModel->getPlat();
-
 		$this->load->view('backOffice/plat/listePlats', $data);
 	}
 }

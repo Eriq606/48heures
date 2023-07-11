@@ -19,7 +19,7 @@ $this->load->view('templates/leftAdmin');
                                     <th> Menus </th>
                                     <th> Activités sportives </th>
                                     <th> Durée </th>
-                                    <th> Poids (diminué ou augmenté ) </th>
+                                    <th> Poids </th>
                                     <th> Montant total </th>
                                     <th> Modifier </th>
                                     <th> Supprimer </th>
@@ -90,7 +90,11 @@ $this->load->view('templates/leftAdmin');
                                         <?php echo $regime->duree ?> Jours
                                     </td>
                                     <td class="text-center">
-                                        <?php echo $regime->poids ?> kg
+                                        <?php if($regime->idobjectif == 1)  { ?>
+                                        diminué de <?php echo $regime->poids ?> kg
+                                        <?php } else { ?>
+                                            augmenté de <?php echo $regime->poids ?> kg
+                                            <?php } ?>
                                     </td>
                                     <td class="text-center">
                                         <div class="mb-4">

@@ -114,7 +114,7 @@ $this->load->view('templates/left');
                       <?php echo number_format($this->RegimeModel->getMontantTotal($r), 2, ",", " "); ?> Ar
                     </div>
                     <div>
-                    <a href="<?php echo site_url('regime/commander/'.$r->idregime); ?>" >
+                    <a href="regime/commander/<?php echo $r->idregime; ?>">
                       <button type="button" class="btn btn-outline-success btn-icon-text">
                        <i class="mdi mdi-shopping  btn-icon-prepend"></i> Commander</button>
                        </a>

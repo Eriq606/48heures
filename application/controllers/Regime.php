@@ -216,6 +216,7 @@ class Regime extends CI_Controller {
 	}	
 	public function toCreate(){
 		$duree=$this->input->post('duree');
+		$descriRegime=$this->input->post('descriRegime');
 		$poids=$this->input->post('poids');
 		$objectif=$this->input->post('optionsRadios');
 		$activites=$this->input->post('activite');
@@ -235,6 +236,17 @@ class Regime extends CI_Controller {
 				array_push($frequences, $this->input->post('frequence'.$a));
 			}
 		}
-		
+		if(count($quantites)==0||count($frequences)==0){
+			redirect("regime/create");
+		}
+		$this->RegimeModel->saveRegime($descriRegime, $duree, $objectif, $poids);
+		$lastId=$this->RegimeModel->getLastId();
+		for($i=0; $i<count($plats); $i++){
+			$this->RegimeModel->saveRegimePlat($lastId->id, $plats[$i], $quantites[$i]);
+		}
+		for($i=0; $i<count($activites); $i++){
+			$this->RegimeModel->saveRegimeActivite($lastId->id, $activites[$i], $frequences[$i]);
+		}
+		redirect('regime/liste');
 	}
 }
