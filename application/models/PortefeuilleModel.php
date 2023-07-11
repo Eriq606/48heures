@@ -35,8 +35,8 @@ class PortefeuilleModel extends CI_Model {
         return $result;
     }
     public function commanderRegime($user, $regime){
-        $caisse=$this->PortefeuilleModel->getCaisseForProfile($user->iduser);
-        $montanttotal=$this->getMontantTotal($regime);
+        $caisse=$this->getCaisseForProfile($user->iduser);
+        $montanttotal=$this->RegimeModel->getMontantTotal($regime);
         $peutAcheter;
         if($caisse>=$montanttotal){
             $peutAcheter=true;
