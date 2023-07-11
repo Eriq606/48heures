@@ -7,10 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="<?php echo site_url('pdf/content_pdf'); ?>" method="post">
+    <form action="<?php echo site_url('pdf/Regime_PDF'); ?>" method="post" target="_blank">
         <select name="idregime">
             <?php foreach ($regime as $reg) { ?>
-                <option value="<?php echo $reg->idregime ?>"><?php echo $reg->descriregime ?></option>
+                <option value="<?php echo $reg->idregime ?>"><?php echo $reg->descriRegime ?></option>
             <?php } ?>
         </select>
         <input type="submit" value="mettre a jour">

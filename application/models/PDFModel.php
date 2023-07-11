@@ -40,7 +40,7 @@ class PDFModel extends CI_Model {
     
     public function getRegimeActivite($idregime){
         $this->db->select('*');
-        $this->db->from('v_regimeactvite');
+        $this->db->from('v_regimeactivite');
         $this->db->where('idregime', $idregime);
 
         $query = $this->db->get();
