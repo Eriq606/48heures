@@ -14,6 +14,7 @@
             require_once(APPPATH . 'libraries/fpdf/fpdf.php');
             $idregime = $this->input->post('idregime');
 
+            $montant = 0;
             $data = array();
             $plats = $this->PDFModel->getRegimePlat($idregime);
             $activites = $this->PDFModel->getRegimeActivite($idregime);
@@ -33,6 +34,7 @@
                 $pdf->Cell(10, 8, $plat->descriUnite, 0, 0, 'L');
                 $pdf->Cell(30, 8, $plat->pu, 0, 0, 'R');
                 $pdf->Cell(10, 8, 'Ar', 0, 1, 'L');
+                $montant = $montant + $plat->pu;
             }
 
             $pdf->SetFont('Arial', 'BU', 14);
@@ -50,10 +52,12 @@
             $pdf->Cell(15, 15, $plats[0]->duree, 0, 0, 'R');
             $pdf->Cell(10, 15, 'jour(s)', 0, 1, 'L');
 
+            $montant = $montant * $plats[0]->duree;
+
             $pdf->SetFont('Arial', 'BU', 14);
             $pdf->Cell(125,15,'Montant total :',0, 0);
             $pdf->SetFont('Arial', '', 14);
-            $pdf->Cell(15, 15, '1000', 0, 0, 'R');
+            $pdf->Cell(15, 15, $montant, 0, 0, 'R');
             $pdf->Cell(10, 15, 'Ar', 0, 1, 'L');
 
             $pdf->Output('Regime.pdf', 'I');          
