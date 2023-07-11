@@ -14,17 +14,15 @@ $this->load->view('templates/leftAdmin');
                         <p class="card-description"> Remplissez le formulaire </p>
                         <form class="forms-sample">
                             <div class="form-group">
-                                <label for="duree">durée en jour</label>
-                                <input type="number" class="form-control" id="duree" placeholder="duree" value="duree par defaut" required>
                                 <div class="form-group">
                                     <label for="description">description</label>
                                     <input type="text" class="form-control" id="description" placeholder="description du plat"
-                                    value="description par defaut"  required>
+                                    value="<?php echo($plat->descriPlat); ?>"  required>
                                 </div>
                                 <div class="form-group">
                                     <label for="prixUnitaire">Prix unitaire</label>
                                     <input type="number" class="form-control" id="prixUnitaire" placeholder="prix unitaire du plat"
-                                    value="prix unitaire par defaut" step="0.1"  required>
+                                    value="<?php echo($plat->pu); ?>" step="0.1"  required>
                                 </div>
                                 <div class="form-group">
                                     <label for="unite" style="margin-right:15px;">Unite</label>

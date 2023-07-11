@@ -26,3 +26,6 @@ create or replace view v_code as
     from entreecode
     join code on entreecode.idcode=code.idcode
     join utilisateur on entreecode.iduser=utilisateur.iduser;
+
+create or replace view v_plat as
+    select plat.*, descriUnite from plat join unite on unite.idunite=plat.idunite;

@@ -28,27 +28,55 @@ class Plat extends CI_Controller {
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
+
+		$this->PlatModel->deletePlat($idplat);
+
 		redirect('plat/liste');
+	}
+
+	public function toUpdate($idPlat)
+	{
+		$user=$this->session->user;
+		$data['user']=$user;
+
+		$data['plat'] = $this->PlatModel->getPlatById($idPlat);
+
+		$this->load->view('backOffice/plat/updatePlat', $data);
 	}
 	
 	public function update($idPlat)
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
-		$this->load->view('backOffice/plat/updatePlat', $data);
+
+		$idplat = $this->input->post('idpl$idplat');
+		$descriPLat = $this->input->post('descriPLat');
+		$pu = $this->input->post('pu');
+		$idunite = $this->input->post('idunite');
+
+		$this->PlatModel->updatePlat($idplat, $descriPLat, $pu, $idunite);
+
+		redirect('plat/liste');
 	}
     
     public function create()
 	{
 		$data['user']=$this->session->user;
-		$this->load->view('backOffice/plat/createPlat', $data);
+		$descriPLat = $this->input->post('descriPLat');
+		$pu = $this->input->post('pu');
+		$idunite = $this->input->post('idunite');
+		$this->PlatModel->savePlat($descriPLat, $pu, $idunite);
 		
+		redirect('plat/liste');
 	}
     
     public function liste()
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
+
+		$data['plats'] = $this->PlatModel->getPlat();
+
 		$this->load->view('backOffice/plat/listePlats', $data);
 	}
 }
