@@ -52,6 +52,14 @@ class RegimeModel extends CI_Model {
         $result[0]->regimeActivite=$this->getRegimeActiviteByRegime($result[0]->idregime);
         return $result[0];
     }
+    public function verifierSiPeutAcheter($user, $regime){
+        $caisse=$this->PortefeuilleModel->getCaisseForProfile($user->iduser);
+        $montanttotal=$this->getMontantTotal($regime);
+        if($caisse<$montanttotal){
+            return false;
+        }
+        return true;
+    }
 }
 
 ?>

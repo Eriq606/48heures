@@ -34,6 +34,19 @@ class PortefeuilleModel extends CI_Model {
         $result->montant=0;
         return $result;
     }
+    public function commanderRegime($user, $regime){
+        $peutAcheter=$this->RegimeModel->verifierSiPeutAcheter($user, $regime);
+        if($peutAcheter){
+            $array=array(
+                'iduser' => $user->iduser,
+                'idregime' => $regime->idregime,
+                'montant' => $this->RegimeModel->getMontantTotal($regime),
+                'date' => date('Y-m-d')
+            );
+            $this->db->insert("commanderegime", $array);
+        }
+        return $peutAcheter;
+    }
 }
 
 ?>

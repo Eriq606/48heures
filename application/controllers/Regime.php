@@ -18,7 +18,7 @@ class Regime extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index($erreur="")
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
@@ -29,12 +29,24 @@ class Regime extends CI_Controller {
 			$marge=5;
 		}
 		$regimes=$this->RegimeModel->getRegimeCorrespondant($marge, $dernierObjectif);
+		$caisse=$this->PortefeuilleModel->getCaisseForProfile($user->iduser);
+		$data['caisse']=number_format($caisse, 2, ",", " ");
 		$data['profile']=$profile;
 		$data['objectif']=$dernierObjectif;
 		$data['regimes']=$regimes;
 		$data['marge']=$marge;
+		$data['erreur']=$erreur;
 		$this->load->view('frontOffice/regime/selectionRegimes', $data);
-	}	
+	}
+	public function commander($idregime){
+		$user=$this->session->user;
+		$regime=$this->RegimeModel->getRegimeById($idregime);
+		$commande=$this->PortefeuilleModel->commanderRegime($user, $regime);
+		if(!$commande){
+			redirect('regime/index/Le_regime_est_trop_cher');
+		}
+		redirect('regime');
+	}
 
 	public function delete($idRegime)
 	{
