@@ -2,41 +2,52 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Activite extends CI_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	
 	public function index()
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
+
+		$data['activites'] = $this->ActiviteModel->getActivite();
+
 		$this->load->view('backOffice/activite/createAndList', $data);
 	}	
+
+	public function create()
+	{
+		$descriActivite = $this->input->post('descriActivite');
+		$this->ActiviteModel->saveActvite($descriActivite);
+		
+		redirect('activite');
+	}
 
     public function delete($idActivite)
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
+		
+		$this->ActiviteModel->deleteActivite($idActivite);
+
 		redirect('activite');
 	}
 	
-	public function update($idActivite)
+	public function toUpdate($idActivite)
 	{
 		$user=$this->session->user;
 		$data['user']=$user;
+
+		$data['activite'] = $this->ActiviteModel->getActiviteById($idActivite);
+
 		$this->load->view('backOffice/activite/updateActivite', $data);
+	}
+
+	public function update()
+	{
+		$idActivite = $this->input->post('idActivite');
+		$descriActivite = $this->input->post('descriActivite');
+		$this->ActiviteModel->updateActivite($idActivite, $descriActivite);
+
+		redirect('activite');     
 	}
 	
 }
