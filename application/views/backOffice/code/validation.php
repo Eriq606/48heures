@@ -24,20 +24,21 @@ $this->load->view('templates/leftAdmin');
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php foreach($entrees as $e){ ?>
                                 <tr>
                                     <td>
-                                        16-07-2023
+                                        <?php echo $e->date; ?>
                                     </td>
                                     <td>
-                                        yoan
+                                        <?php echo $e->nom; ?>
                                     </td>
                                     <td style="text-align:center;">
-                                        1354a6sd
+                                        <?php echo $e->descriCode; ?>
                                     </td>
                                     <td style="text-align:right">
-                                        10 000 Ar
+                                        <?php echo number_format($e->valeur, 2, ",", " "); ?> Ar
                                     </td>
-                                    <td style="text-align:center;"><label class="badge badge-danger">en attente</label>
+                                    <td style="text-align:center;"><label class="badge badge-danger"><?php echo $e->descriEtat; ?></label>
                                     </td>
                                     <td class="text-center">
                                         <div>
@@ -48,10 +49,9 @@ $this->load->view('templates/leftAdmin');
                                         </div>
                                     </td>
                     </div>
-
                 </div>
-
                 </tr>
+                <?php } ?>
                 <tr>
                                     <td>
                                         16-07-2023

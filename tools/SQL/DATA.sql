@@ -183,5 +183,5 @@ insert into code values(default, 'ABCDEF', 10000),
                         (default, '123456', 2000000);
 
 insert into etat values(1, 'En attente'),
-                        (11, 'Valider'),
-                        (21, 'Annule');
+                        (11, 'Valide'),
+                        (21, 'Deja pris');
