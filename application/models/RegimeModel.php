@@ -42,6 +42,14 @@ class RegimeModel extends CI_Model {
         }
         return $somme;
     }
+    public function getRegimeById($idregime){
+        $this->db->select("*");
+        $this->db->from("regime");
+        $this->db->where("idregime", $idregime);
+        $result=$this->db->get();
+        $result=$result->result();
+        return $result[0];
+    }
 }
 
 ?>
