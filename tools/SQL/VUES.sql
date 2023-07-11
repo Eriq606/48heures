@@ -12,7 +12,7 @@ create or replace view v_totalcode as
     from utilisateur
     join entreecode on utilisateur.iduser=entreecode.iduser
     join code on entreecode.idcode=code.idcode
-    where entreecode.idetat=21
+    where entreecode.idetat=11
     group by utilisateur.iduser, utilisateur.nom;
 
 create or replace view v_totaldepense as
@@ -20,9 +20,3 @@ create or replace view v_totaldepense as
     from utilisateur
     join commanderegime on utilisateur.iduser=commanderegime.iduser
     group by utilisateur.iduser, utilisateur.nom;
-
-create or replace view v_solde as
-    select utilisateur.iduser, utilisateur.nom, v_totalcode.totalcode-v_totaldepense.montant as solde
-    from utilisateur
-    join v_totalcode on utilisateur.iduser=v_totalcode.iduser
-    join v_totaldepense on utilisateur.iduser=v_totaldepense.iduser;

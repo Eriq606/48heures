@@ -11,9 +11,9 @@ $this->load->view('templates/left');
             <div class="card">
                 <div class="card-body">
                 <h4 class="card-title">Recharger mon compte</h4>
-                <form class="forms-sample" method="post" action="#">
+                <form class="forms-sample" method="post" action="<?php echo site_url('code/entreeCode'); ?>">
                     <div class="form-group">
-                    <input type="text" class="form-control" id="code" name="code" placeholder="votre code de recharge"  required>
+                    <input type="text" class="form-control" id="code" name="codestr" placeholder="votre code de recharge"  required>
                     </div>
                     <button type="submit" class="btn btn-gradient-primary me-2">Recharger mon compte</button>
                 </form>
@@ -26,7 +26,7 @@ $this->load->view('templates/left');
                     <img src="<?php echo site_url('assets/images/dashboard/circle.svg'); ?>" class="card-img-absolute" alt="circle-image">
                     <h4 class="font-weight-normal mb-3">Solde actuel <i class="mdi mdi-shopping mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5"><?php echo number_format($caisse->solde, 2, ",", " "); ?> Ar</h2>
+                    <h2 class="mb-5"><?php echo number_format($caisse, 2, ",", " "); ?> Ar</h2>
                   </div>
                 </div>
               </div>

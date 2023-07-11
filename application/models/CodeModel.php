@@ -14,10 +14,20 @@ class CodeModel extends CI_Model {
             'identreecode' => 'null',
             'iduser' => $iduser,
             'date' => $date,
-            'code' => $code->id,
+            'idcode' => $code->idcode,
             'idetat' => 1
         );
         $this->db->insert("entreecode", $array);
+    }
+    public function getCodeByStr($codestr){
+        $query="select * from code where descriCode='%s'";
+        $query=sprintf($query, $codestr);
+        $result=$this->db->query($query);
+        $result=$result->result();
+        if(count($result)>0){
+            return $result[0];
+        }
+        return false;
     }
 }
 

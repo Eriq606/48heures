@@ -40,5 +40,15 @@ class Code extends CI_Controller {
 		$data['user']=$user;
 		$this->load->view('backOffice/code/validation', $data);
 	}
-	
+	public function entreeCode(){
+		$codestr=$this->input->post('codestr');
+		$code=$this->CodeModel->getCodeByStr($codestr);
+		if($code===false){
+			redirect('code');
+		}
+		$user=$this->session->user;
+		$date=date('Y-m-d');
+		$this->CodeModel->enregistrerCodeUser($user->iduser, $code, $date);
+		redirect('code');
+	}
 }
