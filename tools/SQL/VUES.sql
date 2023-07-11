@@ -41,7 +41,7 @@ create or replace view v_nbobjectif as
     group by idobjectif;
 
 create or replace view v_objectifstat as
-    select v_nbobjectif.*, nombre*100/(select count(idprofileObjectif) from profileObjectif), objectif.descriObjectif
+    select v_nbobjectif.*, nombre*100/(select count(idprofileObjectif) from profileObjectif) as pourcentage, objectif.descriObjectif
     from v_nbobjectif
     join objectif on v_nbobjectif.idobjectif=objectif.idobjectif;
 
