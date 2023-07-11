@@ -8,7 +8,7 @@ class DashboardModel extends CI_Model {
         $result=$this->db->get();
         $result=$result->result();
         if(count($result)>0){
-            $result[0];
+            return $result[0];
         }
         return 0;
     }
@@ -31,7 +31,7 @@ class DashboardModel extends CI_Model {
         $result=$this->db->get();
         $result=$result->result();
         if(count($result)>0){
-            $result[0];
+            return $result[0];
         }
         return 0;
     }
