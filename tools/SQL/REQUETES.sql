@@ -88,7 +88,7 @@ create table code(
     valeur real
 );
 create table etat(
-    idetat int AUTO_INCREMENT PRIMARY key,
+    idetat int PRIMARY key,
     descriEtat varchar(35)
 );
 CREATE TABLE entreecode(

@@ -163,3 +163,25 @@ INSERT INTO regimeActivite values (11, 8, 11, 40);
 INSERT INTO regimeActivite values (12, 9, 12, 50);
 INSERT INTO regimeActivite values (13, 10, 13, 45);
 INSERT INTO regimeActivite values (14, 10, 14, 100);
+
+insert into code values(default, 'ABCDEF', 10000),
+                        (default, 'GHIJKL', 5000),
+                        (default, 'MNOPQR', 2000),
+                        (default, 'STUVWX', 1000),
+                        (default, 'YZABCD', 500),
+
+                        (default, 'EFGHIJ', 20000),
+                        (default, 'KLMNOP', 50000),
+                        (default, 'QRSTUV', 100000),
+                        (default, 'WXYZAB', 150000),
+                        (default, 'CDEFGH', 500000),
+
+                        (default, 'IJKLMN', 250000),
+                        (default, 'OPQRST', 750000),
+                        (default, 'UVWXYZ', 1000000),
+                        (default, 'YXWVUT', 1500000),
+                        (default, '123456', 2000000);
+
+insert into etat values(1, 'En attente'),
+                        (11, 'Valider'),
+                        (21, 'Annule');

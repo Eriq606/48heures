@@ -11,7 +11,9 @@ class PortefeuilleModel extends CI_Model {
         if(count($result)>0){
             return $result[0];
         }
-        return null;
+        $result=new stdClass();
+        $result->solde=0;
+        return $result;
     }
 }
 

@@ -9,6 +9,16 @@ class CodeModel extends CI_Model {
         $result=$result->result();
         return $result;
     }
+    public function enregistrerCodeUser($iduser, $code, $date){
+        $array=array(
+            'identreecode' => 'null',
+            'iduser' => $iduser,
+            'date' => $date,
+            'code' => $code->id,
+            'idetat' => 1
+        );
+        $this->db->insert("entreecode", $array);
+    }
 }
 
 ?>
