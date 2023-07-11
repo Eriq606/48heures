@@ -29,6 +29,13 @@ class CodeModel extends CI_Model {
         }
         return false;
     }
+    public function getAllEntreeCode(){
+        $this->db->select("*");
+        $this->db->from("v_code");
+        $result=$this->db->get();
+        $result=$result->result();
+        return $result;
+    }
 }
 
 ?>

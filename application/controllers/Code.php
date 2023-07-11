@@ -32,6 +32,8 @@ class Code extends CI_Controller {
 	public function toValidate() {
 		$user=$this->session->user;
 		$data['user']=$user;
+		$entreecode=$this->CodeModel->getAllEntreeCode();
+		$data['entrees']=$entreecode;
 		$this->load->view('backOffice/code/validation', $data);
 	}
 

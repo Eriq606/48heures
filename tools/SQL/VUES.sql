@@ -20,3 +20,9 @@ create or replace view v_totaldepense as
     from utilisateur
     join commanderegime on utilisateur.iduser=commanderegime.iduser
     group by utilisateur.iduser, utilisateur.nom;
+
+create or replace view v_code as
+    select entreecode.*, code.descriCode, code.valeur, utilisateur.nom
+    from entreecode
+    join code on entreecode.idcode=code.idcode
+    join utilisateur on entreecode.iduser=utilisateur.iduser;
